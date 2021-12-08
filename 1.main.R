@@ -29,23 +29,22 @@
 #
 # === global variables =========================================================
 
-## declare variables that will be used across the project and should not be 
-## changed. For example names, or a range of e.g. dates selected, etc
-
 wk.dir <- getwd() 
+park_capacity <- 12
+ride_capacity <- 10
+rides <- c("coolest", "okayest", "lamest")
+time_stamps <- c(1:1)
+visitors <- c(1:park_capacity)
 
 # === libraries ================================================================
 
-# install packages needed for the project
-#install.packages()
-
-# load the libraries needed for the project to run 
-# library()
+# # install packages needed for the project
+# install.packages("tidyverse")
+# 
+# # load the libraries needed for the project to run 
+# library("tidyverse")
 
 # === folder management ========================================================
-
-## names of project folders("a.figures","b.data.raw","c.data.clean","d.results")
-## store names of the folders in an object
 
 # folder names
 ## the a b c makes them ordered again, but not 
