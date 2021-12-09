@@ -33,7 +33,7 @@ wk.dir <- getwd()
 park_capacity <- 12
 ride_capacity <- 3
 rides <- c("coolest", "okayest", "lamest")
-time_stamps <- c(1:1)
+time_steps <- c(1:3)
 visitors <- c(1:park_capacity)
 
 # === libraries ================================================================
