@@ -18,12 +18,15 @@ visitor_tracker$visitors <- rep(visitors)
 visitor_tracker$ride <- f.ride_picker(visitor_col, assigned_ride)
 
 # adding spot in line column to the data frame
-visitor_tracker$spot_in_line <- NA
-visitor_tracker$spot_in_line <- f.get_spot_in_line(visitor_tracker)
+#visitor_tracker$spot_in_line <- NA
+#visitor_tracker$spot_in_line <- f.get_spot_in_line(visitor_tracker)
+visitor_tracker$spot_in_line <- f.get_spot_in_line_looped(visitor_tracker)
+
 
 # adding status column to the data frame
-visitor_tracker$status <- NA
-visitor_tracker$status <- f.get_status(visitor_tracker)
+# visitor_tracker$status <- NA
+# visitor_tracker$status <- f.get_status(visitor_tracker)
+visitor_tracker$status <- f.get_status_looped(visitor_tracker)
 
 
 #___ end _______________________________________________________________________
