@@ -40,27 +40,6 @@ spots <- visitors
 
 # creating a function that takes in visitor tracker and returns each visitor's 
 # spot in line
-f.get_spot_in_line <- function(visitor_tracker){
-  # counting visitors in line for the coolest ride
-  coolest_visitors <- length(which(visitor_tracker$ride == "coolest"))
-  # assigning a spot in line to each of them (each spot repeats to accommodate
-  # for ride capacity)
-  visitor_tracker[visitor_tracker$ride == "coolest", ]$spot_in_line <-
-    sort(rep(spots, ride_capacity))[1:coolest_visitors]
-  # counting visitors in line for the lamest ride
-  okayest_visitors <- length(which(visitor_tracker$ride == "okayest"))
-  # assigning a spot in line to each of them (each spot repeats to accommodate
-  # for ride capacity)
-  visitor_tracker[visitor_tracker$ride == "okayest", ]$spot_in_line <-
-    sort(rep(spots, ride_capacity))[1:okayest_visitors]
-  # counting visitors in line for the lamest ride
-  lamest_visitors <- length(which(visitor_tracker$ride == "lamest"))
-  # assigning a spot in line to each of them (each spot repeats to accommodate
-  # for ride capacity)
-  visitor_tracker[visitor_tracker$ride == "lamest", ]$spot_in_line <-
-    sort(rep(spots, ride_capacity))[1:lamest_visitors]
-}
-
 f.get_spot_in_line_looped <- function(visitor_tracker){
   visitor_tracker$spot_in_line <- NA
   for(i in visitors){
@@ -86,6 +65,7 @@ f.get_spot_in_line_looped <- function(visitor_tracker){
       visitor_tracker[visitor_tracker$ride == "lamest", ]$spot_in_line <- 
         sort(rep(spots, ride_capacity))[1:lamest_visitors]}
   }
+  return(visitor_tracker$spot_in_line)
 }
 
 # === 3) status assigner =======================================================
@@ -96,33 +76,10 @@ states <- c("r_coolest", "w_coolest", "r_okayest", "w_okayest", "r_lamest", "w_l
 # ride_capacity visitors get status riding for each ride, the rest get waiting
 
 # a function that takes in visitor_tracker and returns status of each visitor
-f.get_status <- function(visitor_tracker){
-  # for the visitors riding the coolest ride
-  visitor_tracker[(visitor_tracker$ride == "coolest") &
-                    (visitor_tracker$spot_in_line <= 1), ]$status <- states[1]
-  # for the visitors waiting to ride the coolest ride
-  if(coolest_visitors > ride_capacity){
-    visitor_tracker[(visitor_tracker$ride == "coolest") &
-                      (visitor_tracker$spot_in_line >= 2), ]$status <- states[2]}
-  # for the visitors riding the okayest ride
-  visitor_tracker[(visitor_tracker$ride == "okayest") &
-                    (visitor_tracker$spot_in_line <= 1), ]$status <- states[3]
-  # for the visitors waiting to ride the okayest ride
-  if(okayest_visitors > ride_capacity){
-    visitor_tracker[(visitor_tracker$ride == "okayest") &
-                      (visitor_tracker$spot_in_line >= 2), ]$status <- states[4]}
-  # for the visitors riding the lamest ride
-  visitor_tracker[(visitor_tracker$ride == "lamest") &
-                    (visitor_tracker$spot_in_line <= 1), ]$status <- states[5]
-  # for the visitors waiting to ride the lamest ride
-  if(lamest_visitors > ride_capacity){
-    visitor_tracker[(visitor_tracker$ride == "lamest") &
-                      (visitor_tracker$spot_in_line >= 2), ]$status <- states[6]}
-}
-  
 f.get_status_looped <- function(visitor_tracker){
   visitor_tracker$status <- NA
   for(i in visitors){
+    coolest_visitors <- length(which(visitor_tracker$ride == "coolest"))
     if(visitor_tracker$ride[i,] == "coolest"){
       # for the visitors riding the coolest ride
       visitor_tracker[(visitor_tracker$ride == "coolest") &
@@ -131,6 +88,7 @@ f.get_status_looped <- function(visitor_tracker){
       if(coolest_visitors > ride_capacity){
         visitor_tracker[(visitor_tracker$ride == "coolest") &
                           (visitor_tracker$spot_in_line >= 2), ]$status <- states[2]}}
+    okayest_visitors <- length(which(visitor_tracker$ride == "okayest"))
     if(visitor_tracker$ride[i,] == "okayest"){
       # for the visitors riding the okayest ride
       visitor_tracker[(visitor_tracker$ride == "okayest") &
@@ -139,6 +97,7 @@ f.get_status_looped <- function(visitor_tracker){
       if(okayest_visitors > ride_capacity){
         visitor_tracker[(visitor_tracker$ride == "okayest") &
                           (visitor_tracker$spot_in_line >= 2), ]$status <- states[4]}}
+    lamest_visitors <- length(which(visitor_tracker$ride == "lamest"))
     if(visitor_tracker$ride[i,] == "lamest"){
       # for the visitors riding the lamest ride
       visitor_tracker[(visitor_tracker$ride == "lamest") &
@@ -148,11 +107,12 @@ f.get_status_looped <- function(visitor_tracker){
         visitor_tracker[(visitor_tracker$ride == "lamest") &
                           (visitor_tracker$spot_in_line >= 2), ]$status <- states[6]}}
   }
+  return(visitor_tracker$status)
 }
 
 # === next ride picker ====
 
-# the visitors that went on a ride in the previous time stamp now go to a new one
+# the visitors that went on a ride in the previous time step now go to a new one
 # we create a new data frame that includes only the riders 
 riding_visitors <- visitor_tracker2[visitor_tracker2[4] == 1,]
 # we randomly assign a new ride
@@ -169,6 +129,7 @@ waiting_visitors <- visitor_tracker2[visitor_tracker2[4] >1,]
 
 f.move_up <- function(visitor_tracker2){
   waiting_visitors$spot_in_line <- waiting_visitors$spot_in_line - 1
+  return(visitor_tracker2)
 }
 
 f.move_up(visitor_tracker2)
@@ -203,6 +164,7 @@ f.get_spot_in_line_looped <- function(visitor_tracker_merged){
       visitor_tracker_merged[visitor_tracker_merged$ride == "lamest", ]$spot_in_line <- 
         sort(rep(spots, ride_capacity))[1:lamest_visitors]}
   }
+  return(visitor_tracker_merged)
 }
 
 # update status
@@ -234,6 +196,7 @@ f.get_status_looped <- function(visitor_tracker_merged){
         visitor_tracker_merged[(visitor_tracker_merged$ride == "lamest") &
                           (visitor_tracker_merged$spot_in_line >= 2), ]$status <- states[6]}}
   }
+  return(visitor_tracker_merged)
 }
 
 
