@@ -38,23 +38,10 @@ f.ride_picker(visitor_col, assigned_ride)
 # this is so that it is possible for ALL visitors to be in line at the same ride
 spots <- visitors
 # creating spot in line column
-# must be filtered by ride 
-visitor_tracker$spot_in_line <- sort(rep(spots, ride_capacity))[1:park_capacity]
+visitor_tracker$spot_in_line <- NA
 
-# attempt 2
-
-visitor_tracker[visitor_tracker$ride == "coolest", ]$spot_in_line <- 
-  sort(rep(spots, ride_capacity))[1:ride_capacity]
-
-visitor_tracker[visitor_tracker$ride == "okayest", ]$spot_in_line <- 
-  sort(rep(spots, ride_capacity))[1:ride_capacity]
-
-visitor_tracker[visitor_tracker$ride == "lamest", ]$spot_in_line <- 
-  sort(rep(spots, ride_capacity))[1:lamest_visitors]
-
-
-
-# now let's turn that into a function
+# creating a function that takes in visitor tracker and returns each visitor's 
+# spot in line
 f.get_spot_in_line <- function(visitor_tracker){
   # counting visitors in line for the coolest ride
   coolest_visitors <- length(which(visitor_tracker$ride == "coolest"))
@@ -76,10 +63,9 @@ f.get_spot_in_line <- function(visitor_tracker){
     sort(rep(spots, ride_capacity))[1:lamest_visitors]
 }
 
-f.get_spot_in_line(visitor_tracker)
 
 # # === 2) status assigner =======================================================
-# # creating states for visitors, they can either be riding or waiting to ride 
+# # creating states for visitors, they can either be riding or waiting to ride
 # # any of the rides
 # states <- c("r_coolest", "w_coolest", "r_okayest", "w_okayest", "r_lamest", "w_lamest")
 # 
@@ -87,13 +73,10 @@ f.get_spot_in_line(visitor_tracker)
 # visitor_tracker$status <- NA
 # 
 # # ride_capacity visitors get status riding for each ride
-# for(i in visitors){
-#   if(visitor_tracker$ride[i,] == "coolest"){
-#     visitor_tracker$status <- states[1]
-#   }
-# }
-
-
+# 
+# visitor_tracker[(visitor_tracker$ride == "coolest") & 
+#                   (visitor_tracker$spot_in_line <= 1), ]$spot_in_line <- 
+#   sort(rep(spots, ride_capacity))[1:coolest_visitors]
 
 
 
