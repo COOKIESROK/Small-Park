@@ -31,7 +31,7 @@
 
 wk.dir <- getwd() 
 park_capacity <- 12
-ride_capacity <- 10
+ride_capacity <- 3
 rides <- c("coolest", "okayest", "lamest")
 time_stamps <- c(1:1)
 visitors <- c(1:park_capacity)
