@@ -40,7 +40,7 @@ spots <- visitors
 
 # creating a function that takes in visitor tracker and returns each visitor's 
 # spot in line
-f.get_spot_in_line <- function(visitor_tracker){
+# f.get_spot_in_line <- function(visitor_tracker){
   # counting visitors in line for the coolest ride
   coolest_visitors <- length(which(visitor_tracker$ride == "coolest"))
   # assigning a spot in line to each of them (each spot repeats to accommodate 
@@ -61,6 +61,33 @@ f.get_spot_in_line <- function(visitor_tracker){
     sort(rep(spots, ride_capacity))[1:lamest_visitors]
 }
 
+f.get_spot_in_line_looped <- function(visitor_tracker){
+  visitor_tracker$spot_in_line <- NA
+  for(i in visitors){
+    if(visitor_tracker$ride[i,] == "coolest"){
+      # counting visitors in line for the coolest ride
+      coolest_visitors <- length(which(visitor_tracker$ride == "coolest"))
+      # assigning a spot in line to each of them (each spot repeats to accommodate 
+      # for ride capacity)
+      visitor_tracker[visitor_tracker$ride == "coolest", ]$spot_in_line <- 
+        sort(rep(spots, ride_capacity))[1:coolest_visitors]}
+    if(visitor_tracker$ride[i,] == "okayest"){
+      # counting visitors in line for the okayest ride
+      okayest_visitors <- length(which(visitor_tracker$ride == "okayest"))
+      # assigning a spot in line to each of them (each spot repeats to accommodate 
+      # for ride capacity)
+      visitor_tracker[visitor_tracker$ride == "okayest", ]$spot_in_line <- 
+        sort(rep(spots, ride_capacity))[1:okayest_visitors]}
+    if(visitor_tracker$ride[i,] == "lamest"){
+      # counting visitors in line for the lamest ride
+      lamest_visitors <- length(which(visitor_tracker$ride == "lamest"))
+      # assigning a spot in line to each of them (each spot repeats to accommodate 
+      # for ride capacity)
+      visitor_tracker[visitor_tracker$ride == "lamest", ]$spot_in_line <- 
+        sort(rep(spots, ride_capacity))[1:lamest_visitors]}
+  }
+}
+
 # === 2) status assigner =======================================================
 # creating states for visitors, they can either be riding or waiting to ride
 # any of the rides
@@ -69,7 +96,7 @@ states <- c("r_coolest", "w_coolest", "r_okayest", "w_okayest", "r_lamest", "w_l
 # ride_capacity visitors get status riding for each ride, the rest get waiting
 
 # a function that takes in visitor_tracker and returns status of each visitor
-f.get_status <- function(visitor_tracker){
+# f.get_status <- function(visitor_tracker){
   # for the visitors riding the coolest ride
   visitor_tracker[(visitor_tracker$ride == "coolest") &
                     (visitor_tracker$spot_in_line <= 1), ]$status <- states[1]
@@ -92,4 +119,44 @@ f.get_status <- function(visitor_tracker){
     visitor_tracker[(visitor_tracker$ride == "lamest") &
                       (visitor_tracker$spot_in_line >= 2), ]$status <- states[6]}
 }
+
+f.get_status_looped <- function(visitor_tracker){
+  visitor_tracker$status <- NA
+  for(i in visitors){
+    if(visitor_tracker$ride[i,] == "coolest"){
+      # for the visitors riding the coolest ride
+      visitor_tracker[(visitor_tracker$ride == "coolest") &
+                        (visitor_tracker$spot_in_line <= 1), ]$status <- states[1]
+      # for the visitors waiting to ride the coolest ride
+      if(coolest_visitors > ride_capacity){
+        visitor_tracker[(visitor_tracker$ride == "coolest") &
+                          (visitor_tracker$spot_in_line >= 2), ]$status <- states[2]}}
+    if(visitor_tracker$ride[i,] == "okayest"){
+      # for the visitors riding the okayest ride
+      visitor_tracker[(visitor_tracker$ride == "okayest") &
+                        (visitor_tracker$spot_in_line <= 1), ]$status <- states[3]
+      # for the visitors waiting to ride the okayest ride
+      if(okayest_visitors > ride_capacity){
+        visitor_tracker[(visitor_tracker$ride == "okayest") &
+                          (visitor_tracker$spot_in_line >= 2), ]$status <- states[4]}}
+    if(visitor_tracker$ride[i,] == "lamest"){
+      # for the visitors riding the lamest ride
+      visitor_tracker[(visitor_tracker$ride == "lamest") &
+                        (visitor_tracker$spot_in_line <= 1), ]$status <- states[5]
+      # for the visitors waiting to ride the lamest ride
+      if(lamest_visitors > ride_capacity){
+        visitor_tracker[(visitor_tracker$ride == "lamest") &
+                          (visitor_tracker$spot_in_line >= 2), ]$status <- states[6]}}
+  }
+}
+
+# === TIME TO FIGURE OUT LOOPS ONCE AND FOR ALL ====
+
+
+
+
+
+
+
+
 
