@@ -4,6 +4,10 @@
 #
 
 # === 1) visitor tracker ts 1===================================================
+f.initializing()
+
+# === extra ========
+
 # creating a list of time steps that repeats each times tamp for each guest
 repeated_steps <- rep(time_steps[1], park_capacity)
 
@@ -18,10 +22,10 @@ visitor_tracker$visitors <- rep(visitors)
 visitor_tracker$ride <- f.ride_picker(visitor_col, assigned_ride)
 
 # adding spot in line column to the data frame
-visitor_tracker$spot_in_line <- f.get_spot_in_line_looped(visitor_tracker)
+visitor_tracker$spot_in_line <- f.get_spot_in_line(visitor_tracker)
 
 # adding status column to the data frame
-visitor_tracker$status <- f.get_status_looped(visitor_tracker)
+visitor_tracker$status <- f.get_status(visitor_tracker)
 
 # === 2) visitor tracker ts 2===================================================
 # copying visitor tracker
