@@ -40,7 +40,7 @@ spots <- visitors
 
 # creating a function that takes in visitor tracker and returns each visitor's 
 # spot in line
-f.get_spot_in_line_looped <- function(visitor_tracker){
+f.get_spot_in_line <- function(visitor_tracker){
   visitor_tracker$spot_in_line <- NA
   for(i in visitors){
     if(visitor_tracker$ride[i,] == "coolest"){
@@ -76,7 +76,7 @@ states <- c("r_coolest", "w_coolest", "r_okayest", "w_okayest", "r_lamest", "w_l
 # ride_capacity visitors get status riding for each ride, the rest get waiting
 
 # a function that takes in visitor_tracker and returns status of each visitor
-f.get_status_looped <- function(visitor_tracker){
+f.get_status <- function(visitor_tracker){
   visitor_tracker$status <- NA
   for(i in visitors){
     coolest_visitors <- length(which(visitor_tracker$ride == "coolest"))
@@ -110,6 +110,25 @@ f.get_status_looped <- function(visitor_tracker){
   return(visitor_tracker$status)
 }
 
+# === 4) initializer ===========================================================
+
+f.initializing <- function(){
+  # creating a list of time steps that repeats each times tamp for each guest
+  repeated_steps <- rep(time_steps[1], park_capacity)
+  # creating data frame with the time steps sorted in ascending order
+  visitor_tracker <- as.data.frame(matrix(sort(repeated_steps)))
+  colnames(visitor_tracker) <- c("time step")
+  # adding visitor column to data frame
+  visitor_tracker$visitors <- rep(visitors)
+  # adding ride column to data frame
+  visitor_tracker$ride <- f.ride_picker(visitor_col, assigned_ride)
+  # adding spot in line column to the data frame
+  visitor_tracker$spot_in_line <- f.get_spot_in_line(visitor_tracker)
+  # adding status column to the data frame
+  visitor_tracker$status <- f.get_status(visitor_tracker)
+  # return visitor_tracker
+  return(visitor_tracker)
+}
 # === next ride picker ====
 
 # the visitors that went on a ride in the previous time step now go to a new one
