@@ -15,6 +15,9 @@
 # === 1) visitor tracker ts 1===================================================
 visitor_tracker <- f.initializing()
 
+str(visitor_tracker$ride)
+
+
 # === 2) visitor tracker ts 2===================================================
 # copying visitor tracker
 new_visitor_tracker <-data.frame(visitor_tracker)
@@ -28,9 +31,6 @@ new_visitor_tracker[1] <- repeated_steps2
 
 # getting visitor tracker for time step 2
 new_visitor_tracker <- f.get_next_time_step()
-#rownames(new_visitor_tracker) <- c((park_capacity+1):(2*park_capacity))
-rownames(new_visitor_tracker) = make.names(c((park_capacity+1):(2*park_capacity)), 
-                                           unique=TRUE)
 
 # merging both visitor trackers into a single data frame
 complete_visitor_tracker <- rbind(visitor_tracker, new_visitor_tracker)
