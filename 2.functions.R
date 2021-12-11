@@ -1,7 +1,21 @@
 
 # === description ==============================================================
-## brief description what the script file is about
-# 
+# This file contains all the functions needed to run file 3.
+# 1) f.ride_picker randomly assigns a ride to each visitor.
+# 2) f.get_spot_in_line and f.get_new_spot_in_line assign a spot in line to each 
+# visitor.
+# 3) f.get_status and f.get_new_status assign one of 6 states to each visitor.
+# 4) f.initializing sets up the main data frame (visitor_tracker for time step 1).
+# 5) f.move_up moves waiting visitors one spot up in line.
+# 6) f.get_next_time_step updates the main data frame to the next time step in 7 
+# steps: 
+  # 1. create riding_visitors data frame.
+  # 2. assign riding_visitors a new ride.
+  # 3. create waiting visitors data frame.
+  # 4. move waiting visitors one step up in line.
+  # 5. merge both data frames.
+  # 6. update everyones spot in line.
+  # 7. update everyones status.
 
 # === 1) ride picker =========================================================
 visitor_col <- as.data.frame(matrix(visitors))
@@ -199,18 +213,7 @@ f.initializing <- function(){
   # return visitor_tracker
   return(visitor_tracker)
 }
-# === next ride picker ====
-
-# the visitors that went on a ride in the previous time step now go to a new one
-# we create a new data frame that includes only the riders 
-riding_visitors <- new_visitor_tracker[new_visitor_tracker[4] == 1,]
-# we randomly assign a new ride
-next_ride <- sample(x = rides, size = nrow(riding_visitors), 
-       replace = TRUE)
-# we replace the old ride with the new one in the data frame
-riding_visitors$ride <- as.data.frame(next_ride)
-
-# === move up in line function ====
+# === 5) move up in line function ==============================================
 # the visitors that didn't get to go on a ride this time step move up one spot
 # in line
 # we create a new data frame that includes only the waiters 
@@ -224,7 +227,7 @@ f.move_up <- function(new_visitor_tracker){
 
 
 
-# === streamlining new visitor ============
+# === 6) streamlining new visitor ==============================================
 f.get_next_time_step <- function(){
   # step 1
   # the visitors that went on a ride in the previous time step now go to a new one
