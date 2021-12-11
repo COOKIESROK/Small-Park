@@ -1,32 +1,21 @@
 
 # === general ==================================================================
 
-# authors: Sofia
+# authors: Sofia Graves
 # 
 # R version
 # "R version 4.1.2 (2021-11-01)"
 # NOTE: run the 1.main.R before starting your session.
 #
-
-# === notes ====================================================================
-
-# various comments
-# • numbering of files and folder is done to group based on same file type 
-#   (folders, scripts and markdown files together in same sequence)
-# •
-# •
-# 
-## I often use this as a 'to do' list
 #
 # === script index =============================================================
 
 # 1.main.R        
-# 2.data.manip.R
-# 3.analysis.R
-# 4.functions.R
-## and this can apply to figure functions too
+# 2.functions.R
+# 3.tracking.data.R
+# 4.analysis.R
 # 5.figures.R
-#
+
 # === global variables =========================================================
 
 wk.dir <- getwd() 
@@ -37,25 +26,22 @@ time_steps <- c(1:3)
 visitors <- c(1:park_capacity)
 
 # === libraries ================================================================
-
-# # install packages needed for the project
-# install.packages("tidyverse")
-# 
-# # load the libraries needed for the project to run 
-# library("tidyverse")
+# I haven't needed any libraries yet but might use ggplot later
 
 # === folder management ========================================================
 
-# folder names
-## the a b c makes them ordered again, but not 
-folder.names <- c("a.data.raw","b.data.clean", "c.results","d.figures")
+# I havent gotten as far as generating output yet
 
-# create folders if they don't exit yet. 
-for(i in 1:length(folder.names)){ 
-  if(file.exists(folder.names[i]) == FALSE){
-    dir.create(folder.names[i])
-  } 
-}
+# # folder names
+# ## the a b c makes them ordered again, but not 
+# folder.names <- c("a.data.raw", "b.results","c.figures")
+# 
+# # create folders if they don't exit yet. 
+# for(i in 1:length(folder.names)){ 
+#   if(file.exists(folder.names[i]) == FALSE){
+#     dir.create(folder.names[i])
+#   } 
+# }
 
 # ******************************************************************************
 
