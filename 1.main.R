@@ -22,35 +22,31 @@ wk.dir <- getwd()
 park_capacity <- 12
 ride_capacity <- 3
 rides <- c("coolest", "okayest", "lamest")
-time_steps <- c(1:3)
+cycle <- 10
+time_steps <- c(1:cycle)
 visitors <- c(1:park_capacity)
 
 # === libraries ================================================================
 # I haven't needed any libraries yet but might use ggplot later
 
 # === folder management ========================================================
+# folder names
+folder.names <- c("a.data", "b.results","c.figures")
 
-# I havent gotten as far as generating output yet
-
-# # folder names
-# ## the a b c makes them ordered again, but not 
-# folder.names <- c("a.data.raw", "b.results","c.figures")
-# 
-# # create folders if they don't exit yet. 
-# for(i in 1:length(folder.names)){ 
-#   if(file.exists(folder.names[i]) == FALSE){
-#     dir.create(folder.names[i])
-#   } 
-# }
+# create folders if they don't exit yet.
+for(i in 1:length(folder.names)){
+  if(file.exists(folder.names[i]) == FALSE){
+    dir.create(folder.names[i])
+  }
+}
 
 # ******************************************************************************
 
 # paths to the folders. The 'p.' indicates the variable is a path.
 # make sure the variable names describe the folder.names
-p.data.raw <- paste(wk.dir, "/", folder.names[1], "/", sep = "")
-p.data.clean <- paste(wk.dir, "/", folder.names[2], "/", sep = "")
-p.results <- paste(wk.dir, "/", folder.names[3], "/", sep = "")
-p.fig <- paste(wk.dir, "/", folder.names[4], "/", sep = "")
+p.data <- paste(wk.dir, "/", folder.names[1], "/", sep = "")
+p.results <- paste(wk.dir, "/", folder.names[2], "/", sep = "")
+p.fig <- paste(wk.dir, "/", folder.names[3], "/", sep = "")
 
 # === run script ===============================================================
 
