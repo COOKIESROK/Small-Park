@@ -223,15 +223,57 @@ f.get_points <- function(visitor_tracker){
 # calling function to test
 visitor_tracker$points <- f.get_points(visitor_tracker)
 
-# 
-# # cool points calculator
-# sum(complete_visitor_tracker[complete_visitor_tracker$visitors == 1,]$points)
-# 
-# total_points <- for (i in park_capacity){
-#   as.integer(sum(complete_visitor_tracker[complete_visitor_tracker$visitors == 1,]$points))
-#   }
-# 
-# str(total_points)
+# updating points after first time step
+f.get_new_points <- function(visitor_tracker_merged){
+  for(i in visitors){
+    # looking for visitors riding coolest ride
+    if(visitor_tracker_merged$status[i] == "r_coolest"){
+      # for the visitors riding the coolest ride
+      visitor_tracker_merged[(visitor_tracker_merged$status == "r_coolest"), ]$points <-
+        # add points for coolest
+        visitor_tracker_merged[(visitor_tracker_merged$status == "r_coolest"), ]$points + cool_points[1]}
+    
+    if(visitor_tracker_merged$status[i] == "r_okayest"){
+      # for the visitors riding the okayest ride
+      visitor_tracker_merged[(visitor_tracker_merged$status == "r_okayest"), ]$points <-
+        # add points for okayest
+        visitor_tracker_merged[(visitor_tracker_merged$status == "r_okayest"), ]$points + cool_points[2]}
+    
+    if(visitor_tracker_merged$status[i] == "r_lamest"){
+      # for the visitors riding the lamest ride
+      visitor_tracker_merged[(visitor_tracker_merged$status == "r_lamest"), ]$points <-
+        # add points for lamest
+        visitor_tracker_merged[(visitor_tracker_merged$status == "r_lamest"), ]$points + cool_points[3]
+    }
+  }
+  return(visitor_tracker_merged$points)
+}
+
+# === 7) satisfaction calculator =======================
+# calculating satisfaction score out of 5 based on cool points earned by each 
+# visitor
+# adding a satisfaction column to visitor tracker
+visitor_tracker$satisfaction <- 0
+# function that calculates satisfaction of a customer
+f.get_satisfaction_score <- function(visitor_tracker){
+  for(i in visitors){
+    visitor_tracker$satisfaction <- (visitor_tracker$points/cycle)*5
+  }
+  return(visitor_tracker$satisfaction)
+}
+# calling function
+visitor_tracker$satisfaction <- f.get_satisfaction_score(visitor_tracker)
+
+f.get_new_satisfaction_score <- function(visitor_tracker_merged){
+  for(i in visitors){
+    visitor_tracker_merged$satisfaction <- (visitor_tracker_merged$points/cycle)*5
+  }
+  return(visitor_tracker_merged$satisfaction)
+}
+
+visitor_tracker_merged$satisfaction <- 
+  f.get_new_satisfaction_score(visitor_tracker_merged)
+
 
 # === 4) initializer ===========================================================
 f.initializing <- function(){
@@ -244,17 +286,23 @@ f.initializing <- function(){
   visitor_tracker$visitors <- rep(visitors)
   # adding ride column to data frame
   visitor_tracker$ride <- NA
+  #assigning a ride to each visitor
   visitor_tracker$ride <- f.ride_picker()
   # adding spot in line column to the data frame
   visitor_tracker$spot_in_line <- f.get_spot_in_line(visitor_tracker)
   # adding status column to the data frame
   visitor_tracker$status <- f.get_status(visitor_tracker)
-  # visitor_tracker$points <- 0
-  # visitor_tracker$points <- f.get_points()
+  # adding points column to the data frame
+  visitor_tracker$points <- 0
+  # calculating points based on status
+  visitor_tracker$points <- f.get_points(visitor_tracker)
+  #adding satisfaction column to data frame
+  visitor_tracker$satisfaction <- 0
+  # calculating satisfacion based on points
+  visitor_tracker$satisfaction <- f.get_satisfaction_score(visitor_tracker)
   # return visitor_tracker
   return(visitor_tracker)
 }
-
 
 # === 5) move up in line function ==============================================
 # the visitors that didn't get to go on a ride this time step move up one spot
@@ -301,9 +349,11 @@ f.get_next_time_step <- function(){
   # returns visitor tracker merged
   # step 8
   # get points
-  # visitor_tracker$points <- f.get_points()
+  visitor_tracker_merged$points <- f.get_new_points(visitor_tracker_merged)
+  # step 9
+  # get satisfaction score
+  visitor_tracker_merged$satisfaction <- 
+    f.get_new_satisfaction_score(visitor_tracker_merged)
   return(visitor_tracker_merged)
 }
-
-
 
