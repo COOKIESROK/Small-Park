@@ -150,7 +150,7 @@ f.get_status <- function(visitor_tracker){
   return(visitor_tracker$status)
 }
 
-# update status WORKING (possibly, fairly sure)
+# update status WORKING (possibly, fairly sure) (definitely works)
 f.get_new_status <- function(visitor_tracker_merged){
   visitor_tracker_merged$status <- NA
   for(i in visitors){
@@ -191,6 +191,48 @@ f.get_new_status <- function(visitor_tracker_merged){
   return(visitor_tracker_merged)
 }
 
+# === 4) cool points =====
+# adding a points column
+visitor_tracker$points <- 0
+# creating a function that will give users points based on the rides they ride
+f.get_points <- function(visitor_tracker){
+  for(i in visitors){
+    # looking for visitors riding coolest ride
+    if(visitor_tracker$status[i] == "r_coolest"){
+      # for the visitors riding the coolest ride
+      visitor_tracker[(visitor_tracker$status == "r_coolest"), ]$points <-
+        # add points for coolest
+        visitor_tracker[(visitor_tracker$status == "r_coolest"), ]$points + cool_points[1]}
+
+    if(visitor_tracker$status[i] == "r_okayest"){
+      # for the visitors riding the okayest ride
+      visitor_tracker[(visitor_tracker$status == "r_okayest"), ]$points <-
+        # add points for okayest
+        visitor_tracker[(visitor_tracker$status == "r_okayest"), ]$points + cool_points[2]}
+
+    if(visitor_tracker$status[i] == "r_lamest"){
+      # for the visitors riding the lamest ride
+      visitor_tracker[(visitor_tracker$status == "r_lamest"), ]$points <-
+        # add points for lamest
+        visitor_tracker[(visitor_tracker$status == "r_lamest"), ]$points + cool_points[3]
+    }
+  }
+  return(visitor_tracker$points)
+}
+
+# calling function to test
+visitor_tracker$points <- f.get_points(visitor_tracker)
+
+# 
+# # cool points calculator
+# sum(complete_visitor_tracker[complete_visitor_tracker$visitors == 1,]$points)
+# 
+# total_points <- for (i in park_capacity){
+#   as.integer(sum(complete_visitor_tracker[complete_visitor_tracker$visitors == 1,]$points))
+#   }
+# 
+# str(total_points)
+
 # === 4) initializer ===========================================================
 f.initializing <- function(){
   # creating a list of time steps that repeats each times tamp for each guest
@@ -207,11 +249,12 @@ f.initializing <- function(){
   visitor_tracker$spot_in_line <- f.get_spot_in_line(visitor_tracker)
   # adding status column to the data frame
   visitor_tracker$status <- f.get_status(visitor_tracker)
+  # visitor_tracker$points <- 0
+  # visitor_tracker$points <- f.get_points()
   # return visitor_tracker
   return(visitor_tracker)
 }
 
-str(visitor_tracker$ride)
 
 # === 5) move up in line function ==============================================
 # the visitors that didn't get to go on a ride this time step move up one spot
@@ -256,6 +299,9 @@ f.get_next_time_step <- function(){
   # update status
   visitor_tracker_merged <- f.get_new_status(visitor_tracker_merged)
   # returns visitor tracker merged
+  # step 8
+  # get points
+  # visitor_tracker$points <- f.get_points()
   return(visitor_tracker_merged)
 }
 
