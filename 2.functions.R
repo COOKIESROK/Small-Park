@@ -199,24 +199,20 @@ f.get_points <- function(visitor_tracker){
   for(i in visitors){
     # looking for visitors riding coolest ride
     if(visitor_tracker$status[i] == "r_coolest"){
-      # for the visitors riding the coolest ride
-      visitor_tracker[(visitor_tracker$status == "r_coolest"), ]$points <-
-        # add points for coolest
-        visitor_tracker[(visitor_tracker$status == "r_coolest"), ]$points + cool_points[1]}
-
-    if(visitor_tracker$status[i] == "r_okayest"){
-      # for the visitors riding the okayest ride
-      visitor_tracker[(visitor_tracker$status == "r_okayest"), ]$points <-
-        # add points for okayest
-        visitor_tracker[(visitor_tracker$status == "r_okayest"), ]$points + cool_points[2]}
-
-    if(visitor_tracker$status[i] == "r_lamest"){
-      # for the visitors riding the lamest ride
-      visitor_tracker[(visitor_tracker$status == "r_lamest"), ]$points <-
-        # add points for lamest
-        visitor_tracker[(visitor_tracker$status == "r_lamest"), ]$points + cool_points[3]
+      # adding points for the visitors riding the coolest ride
+      visitor_tracker$points[i] <- visitor_tracker$points[i] + cool_points[1] 
     }
-  }
+    # looking for visitors riding okayest ride
+    if(visitor_tracker$status[i] == "r_okayest"){
+      # adding points for the visitors riding the okayest ride
+      visitor_tracker$points[i] <- visitor_tracker$points[i] + cool_points[2]
+    }
+    # looking for visitors riding lamest ride
+    if(visitor_tracker$status[i] == "r_lamest"){
+      # adding points for the visitors riding the lamest ride
+      visitor_tracker$points[i] <- visitor_tracker$points[i] + cool_points[3]
+    }
+    }
   return(visitor_tracker$points)
 }
 
@@ -228,22 +224,18 @@ f.get_new_points <- function(visitor_tracker_merged){
   for(i in visitors){
     # looking for visitors riding coolest ride
     if(visitor_tracker_merged$status[i] == "r_coolest"){
-      # for the visitors riding the coolest ride
-      visitor_tracker_merged[(visitor_tracker_merged$status == "r_coolest"), ]$points <-
-        # add points for coolest
-        visitor_tracker_merged[(visitor_tracker_merged$status == "r_coolest"), ]$points + cool_points[1]}
-    
+      # adding points for the visitors riding the coolest ride
+      visitor_tracker_merged$points[i] <- visitor_tracker_merged$points[i] + cool_points[1] 
+    }
+    # looking for visitors riding okayest ride
     if(visitor_tracker_merged$status[i] == "r_okayest"){
-      # for the visitors riding the okayest ride
-      visitor_tracker_merged[(visitor_tracker_merged$status == "r_okayest"), ]$points <-
-        # add points for okayest
-        visitor_tracker_merged[(visitor_tracker_merged$status == "r_okayest"), ]$points + cool_points[2]}
-    
+      # adding points for the visitors riding the okayest ride
+      visitor_tracker_merged$points[i] <- visitor_tracker_merged$points[i] + cool_points[2]
+    }
+    # looking for visitors riding lamest ride
     if(visitor_tracker_merged$status[i] == "r_lamest"){
-      # for the visitors riding the lamest ride
-      visitor_tracker_merged[(visitor_tracker_merged$status == "r_lamest"), ]$points <-
-        # add points for lamest
-        visitor_tracker_merged[(visitor_tracker_merged$status == "r_lamest"), ]$points + cool_points[3]
+      # adding points for the visitors riding the lamest ride
+      visitor_tracker_merged$points[i] <- visitor_tracker_merged$points[i] + cool_points[3]
     }
   }
   return(visitor_tracker_merged$points)
@@ -254,26 +246,39 @@ f.get_new_points <- function(visitor_tracker_merged){
 # visitor
 # adding a satisfaction column to visitor tracker
 visitor_tracker$satisfaction <- 0
+# for satisfaction levels to be more realistic I will be using a relative max
+# satisfaction level instead of the true max satisfaction (because no mortal will
+# ever achieve that)
+# so I  will be using min-max normalization ((value-min)/(max-min)) on the points and then multiplying 
+# that by 5
+
 # function that calculates satisfaction of a customer
 f.get_satisfaction_score <- function(visitor_tracker){
+  # calculating range of points earned by visitors
+  first_points_range <- range(visitor_tracker$points)
+  first_least_points_visitor <- range(visitor_tracker$points)[1]
+  first_most_points_visitor <- range(visitor_tracker$points)[2]
   for(i in visitors){
-    visitor_tracker$satisfaction <- (visitor_tracker$points/cycle)*5
+    visitor_tracker$satisfaction[i] <- ((visitor_tracker$points[i] - first_least_points_visitor)/
+                                          (first_most_points_visitor - first_least_points_visitor))*5
   }
   return(visitor_tracker$satisfaction)
 }
-# calling function
-visitor_tracker$satisfaction <- f.get_satisfaction_score(visitor_tracker)
 
-f.get_new_satisfaction_score <- function(visitor_tracker_merged){
+# function that updates satisfaction of a customer
+f.get_new_satisfaction_score <- 
+  function(complete_visitor_tracker, visitor_tracker_merged){
+  # calculating range of points earned by visitors
+  points_range <- range(complete_visitor_tracker$points)
+  least_points_visitor <- range(complete_visitor_tracker$points)[1]
+  most_points_visitor <- range(complete_visitor_tracker$points)[2]
   for(i in visitors){
-    visitor_tracker_merged$satisfaction <- (visitor_tracker_merged$points/cycle)*5
+    visitor_tracker_merged$satisfaction[i] <- 
+      ((visitor_tracker_merged$points[i] - least_points_visitor)/
+         (most_points_visitor - least_points_visitor))*5
   }
-  return(visitor_tracker_merged$satisfaction)
+  return(round(visitor_tracker_merged$satisfaction, digits = 1))
 }
-
-visitor_tracker_merged$satisfaction <- 
-  f.get_new_satisfaction_score(visitor_tracker_merged)
-
 
 # === 4) initializer ===========================================================
 f.initializing <- function(){
@@ -353,7 +358,7 @@ f.get_next_time_step <- function(){
   # step 9
   # get satisfaction score
   visitor_tracker_merged$satisfaction <- 
-    f.get_new_satisfaction_score(visitor_tracker_merged)
+    f.get_new_satisfaction_score(complete_visitor_tracker, visitor_tracker_merged)
   return(visitor_tracker_merged)
 }
 
