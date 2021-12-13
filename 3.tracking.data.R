@@ -125,6 +125,36 @@ new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker10 <- new_visitor_tracker
 
+# here we repeat the satisfaction calculation because when f.get_new_satisfaction 
+# is called inside the f.get_next_time_step complete_visitor_tracker has not yet 
+# been updated to account for the points found in the last visitor_tracker_merged
+# so without this repetition we end up with satisfaction values larger than 5
+visitor_tracker_merged$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, visitor_tracker_merged)
+
+## important to note that due to way i calculated visitor satisfaction, the  
+# satisfaction of a given visitor is relative to the satisfation of other visitors
+
+# === generating data file =====================================================
+# generating data file and saving in data folder
+visitor_tracker_file <- paste(p.data, "/", "CompleteVisitorTracker.csv", sep = "")
+write.csv(complete_visitor_tracker, visitor_tracker_file)
+
+# === analyzing visitor satisfaction 
+# looking at the least and most satisfied visitors
+satisfaction_range <- range(new_visitor_tracker$satisfaction)
+least_satisfied_visitor <- range(new_visitor_tracker$satisfaction)[1]
+least_satisfied_visitor_id <- 
+  new_visitor_tracker[new_visitor_tracker$satisfaction == least_satisfied_visitor,][2]
+most_satisfied_visitor <- range(new_visitor_tracker$satisfaction)[2]
+most_satisfied_visitor_id <- 
+  new_visitor_tracker[new_visitor_tracker$satisfaction == most_satisfied_visitor,][2]
+
+# looking at mean satisfaction
+mean_satisfaction <- mean(new_visitor_tracker$satisfaction)
+
+# satisfaction distribution histogram?
+
 # === testing for loop===================================================
 # # The problem here is that it only ever saves 2 time steps and I wanna save 
 # # them all.
@@ -149,10 +179,6 @@ visitor_tracker10 <- new_visitor_tracker
 #   complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
 #   }
 
-# === generating data file =====================================================
-# generating data file and saving in data folder
-visitor_tracker_file <- paste(p.data, "/", "CompleteVisitorTracker.csv", sep = "")
-write.csv(complete_visitor_tracker, visitor_tracker_file)
 
 # === points =============
 
