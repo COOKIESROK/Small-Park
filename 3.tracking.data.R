@@ -35,6 +35,9 @@ new_visitor_tracker <- f.get_next_time_step()
 # merging both visitor trackers into a single data frame
 complete_visitor_tracker <- rbind(visitor_tracker, new_visitor_tracker)
 
+# turning new visitor tracker back into visitor tracker 2
+visitor_tracker2 <- new_visitor_tracker
+
 # === 2) visitor tracker ts 3===================================================
 # following the exact same steps as the previous time step
 visitor_tracker3 <-data.frame(visitor_tracker2)
@@ -44,7 +47,7 @@ new_visitor_tracker[1] <- repeated_steps3
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
-
+visitor_tracker3 <- new_visitor_tracker
 # === 2) visitor tracker ts 4 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker4 <-data.frame(visitor_tracker3)
@@ -54,6 +57,7 @@ new_visitor_tracker[1] <- repeated_steps4
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker4 <- new_visitor_tracker
 
 # === 2) visitor tracker ts 5 ==================================================
 # following the exact same steps as the previous time step
@@ -64,6 +68,7 @@ new_visitor_tracker[1] <- repeated_steps5
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker5 <- new_visitor_tracker
 
 # === 2) visitor tracker ts 6 ==================================================
 # following the exact same steps as the previous time step
@@ -74,6 +79,7 @@ new_visitor_tracker[1] <- repeated_steps6
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker6 <- new_visitor_tracker
 
 # === 2) visitor tracker ts 7 ==================================================
 # following the exact same steps as the previous time step
@@ -84,6 +90,7 @@ new_visitor_tracker[1] <- repeated_steps7
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker7 <- new_visitor_tracker
 
 # === 2) visitor tracker ts 8 ==================================================
 # following the exact same steps as the previous time step
@@ -94,6 +101,7 @@ new_visitor_tracker[1] <- repeated_steps8
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker8 <- new_visitor_tracker
 
 # === 2) visitor tracker ts 9 ==================================================
 # following the exact same steps as the previous time step
@@ -104,6 +112,7 @@ new_visitor_tracker[1] <- repeated_steps9
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker9 <- new_visitor_tracker
 
 # === 2) visitor tracker ts 10 ==================================================
 # following the exact same steps as the previous time step
@@ -114,6 +123,7 @@ new_visitor_tracker[1] <- repeated_steps9
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+visitor_tracker10 <- new_visitor_tracker
 
 # === testing for loop===================================================
 # # The problem here is that it only ever saves 2 time steps and I wanna save 
@@ -143,6 +153,12 @@ complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
 # generating data file and saving in data folder
 visitor_tracker_file <- paste(p.data, "/", "CompleteVisitorTracker.csv", sep = "")
 write.csv(complete_visitor_tracker, visitor_tracker_file)
+
+# === points =============
+
+
+
+
 #___ end _______________________________________________________________________
 
 
