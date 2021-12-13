@@ -26,6 +26,7 @@ cycle <- 10
 time_steps <- c(1:cycle)
 visitors <- c(1:park_capacity)
 cool_points <- c(10,5,1)
+true_max_satisfaction <- cool_points[1]*cycle
 
 # === libraries ================================================================
 # I haven't needed any libraries yet but might use ggplot later
