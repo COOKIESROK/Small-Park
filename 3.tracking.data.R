@@ -11,7 +11,6 @@
 # For some reason though, line 36 breaks the program because it claims the row names
 # are being duplicated. I have tried different methods to fix this but none seem to work.
 
-
 # === 1) visitor tracker ts 1===================================================
 visitor_tracker <- f.initializing()
 
@@ -35,10 +34,17 @@ new_visitor_tracker <- f.get_next_time_step()
 # merging both visitor trackers into a single data frame
 complete_visitor_tracker <- rbind(visitor_tracker, new_visitor_tracker)
 
+# here we repeat the satisfaction calculation because when f.get_new_satisfaction 
+# is called inside the f.get_next_time_step complete_visitor_tracker has not yet 
+# been updated to account for the points found in the last visitor_tracker_merged
+# so without this repetition we end up with satisfaction values larger than 5
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
+
 # turning new visitor tracker back into visitor tracker 2
 visitor_tracker2 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 3===================================================
+# === 3) visitor tracker ts 3===================================================
 # following the exact same steps as the previous time step
 visitor_tracker3 <-data.frame(visitor_tracker2)
 new_visitor_tracker <- visitor_tracker3
@@ -47,8 +53,11 @@ new_visitor_tracker[1] <- repeated_steps3
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker3 <- new_visitor_tracker
-# === 2) visitor tracker ts 4 ==================================================
+
+# === 4) visitor tracker ts 4 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker4 <-data.frame(visitor_tracker3)
 new_visitor_tracker <- visitor_tracker4
@@ -57,9 +66,11 @@ new_visitor_tracker[1] <- repeated_steps4
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker4 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 5 ==================================================
+# === 5) visitor tracker ts 5 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker5 <-data.frame(visitor_tracker4)
 new_visitor_tracker <- visitor_tracker5
@@ -68,9 +79,11 @@ new_visitor_tracker[1] <- repeated_steps5
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker5 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 6 ==================================================
+# === 6) visitor tracker ts 6 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker6 <-data.frame(visitor_tracker5)
 new_visitor_tracker <- visitor_tracker6
@@ -79,9 +92,11 @@ new_visitor_tracker[1] <- repeated_steps6
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker6 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 7 ==================================================
+# === 7) visitor tracker ts 7 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker7 <-data.frame(visitor_tracker6)
 new_visitor_tracker <- visitor_tracker7
@@ -90,9 +105,11 @@ new_visitor_tracker[1] <- repeated_steps7
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker7 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 8 ==================================================
+# === 8) visitor tracker ts 8 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker8 <-data.frame(visitor_tracker7)
 new_visitor_tracker <- visitor_tracker8
@@ -101,9 +118,11 @@ new_visitor_tracker[1] <- repeated_steps8
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker8 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 9 ==================================================
+# === 9) visitor tracker ts 9 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker9 <-data.frame(visitor_tracker8)
 new_visitor_tracker <- visitor_tracker9
@@ -112,9 +131,11 @@ new_visitor_tracker[1] <- repeated_steps9
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker9 <- new_visitor_tracker
 
-# === 2) visitor tracker ts 10 ==================================================
+# === 10) visitor tracker ts 10 ==================================================
 # following the exact same steps as the previous time step
 visitor_tracker10 <-data.frame(visitor_tracker9)
 new_visitor_tracker <- visitor_tracker9
@@ -123,39 +144,19 @@ new_visitor_tracker[1] <- repeated_steps9
 waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
 new_visitor_tracker <- f.get_next_time_step()
 complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
+new_visitor_tracker$satisfaction <- 
+  f.get_new_satisfaction_score(complete_visitor_tracker, new_visitor_tracker)
 visitor_tracker10 <- new_visitor_tracker
-
-# here we repeat the satisfaction calculation because when f.get_new_satisfaction 
-# is called inside the f.get_next_time_step complete_visitor_tracker has not yet 
-# been updated to account for the points found in the last visitor_tracker_merged
-# so without this repetition we end up with satisfaction values larger than 5
-visitor_tracker_merged$satisfaction <- 
-  f.get_new_satisfaction_score(complete_visitor_tracker, visitor_tracker_merged)
 
 ## important to note that due to way i calculated visitor satisfaction, the  
 # satisfaction of a given visitor is relative to the satisfation of other visitors
 
-# === generating data file =====================================================
+# === 11) generating data file =================================================
 # generating data file and saving in data folder
 visitor_tracker_file <- paste(p.data, "/", "CompleteVisitorTracker.csv", sep = "")
 write.csv(complete_visitor_tracker, visitor_tracker_file)
 
-# === analyzing visitor satisfaction 
-# looking at the least and most satisfied visitors
-satisfaction_range <- range(new_visitor_tracker$satisfaction)
-least_satisfied_visitor <- range(new_visitor_tracker$satisfaction)[1]
-least_satisfied_visitor_id <- 
-  new_visitor_tracker[new_visitor_tracker$satisfaction == least_satisfied_visitor,][2]
-most_satisfied_visitor <- range(new_visitor_tracker$satisfaction)[2]
-most_satisfied_visitor_id <- 
-  new_visitor_tracker[new_visitor_tracker$satisfaction == most_satisfied_visitor,][2]
-
-# looking at mean satisfaction
-mean_satisfaction <- mean(new_visitor_tracker$satisfaction)
-
-# satisfaction distribution histogram?
-
-# === testing for loop===================================================
+# === 12) testing for loop =====================================================
 # # The problem here is that it only ever saves 2 time steps and I wanna save 
 # # them all.
 # for(i in time_steps){
@@ -178,12 +179,6 @@ mean_satisfaction <- mean(new_visitor_tracker$satisfaction)
 #   # merging both visitor trackers into a single data frame
 #   complete_visitor_tracker <- rbind(complete_visitor_tracker, new_visitor_tracker)
 #   }
-
-
-# === points =============
-
-
-
 
 #___ end _______________________________________________________________________
 
