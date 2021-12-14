@@ -14,10 +14,10 @@
   # 3. create waiting visitors data frame.
   # 4. move waiting visitors one step up in line.
   # 5. merge both data frames.
-  # 6. update everyones spot in line.
-  # 7. update everyones status.
+  # 6. update everyone's spot in line.
+  # 7. update everyone's status.
 
-# === 1) ride picker =========================================================
+# === 1) ride picker ===========================================================
 # visitor_col <- as.data.frame(matrix(visitors))
 # colnames(visitor_col) <- "visitors"
 # for random ride picking
@@ -191,7 +191,7 @@ f.get_new_status <- function(visitor_tracker_merged){
   return(visitor_tracker_merged)
 }
 
-# === 4) cool points =====
+# === 4) cool points ===========================================================
 # adding a points column
 visitor_tracker$points <- 0
 # creating a function that will give users points based on the rides they ride
@@ -241,7 +241,7 @@ f.get_new_points <- function(visitor_tracker_merged){
   return(visitor_tracker_merged$points)
 }
 
-# === 7) satisfaction calculator =======================
+# === 5) satisfaction calculator ===============================================
 # calculating satisfaction score out of 5 based on cool points earned by each 
 # visitor
 # adding a satisfaction column to visitor tracker
@@ -278,9 +278,27 @@ f.get_new_satisfaction_score <-
          (most_points_visitor - least_points_visitor))*5
   }
   return(round(visitor_tracker_merged$satisfaction, digits = 1))
-}
+  }
 
-# === 4) initializer ===========================================================
+# function that updates satisfaction again once we have a complete visitor_tracker
+# after each time step
+f.get_newest_satisfaction_score <- 
+  function(complete_visitor_tracker, new_visitor_tracker){
+    # calculating range of points earned by visitors
+    points_range <- range(complete_visitor_tracker$points)
+    least_points_visitor <- range(complete_visitor_tracker$points)[1]
+    most_points_visitor <- range(complete_visitor_tracker$points)[2]
+    for(i in visitors){
+      i <-6
+      new_visitor_tracker$satisfaction[i] <- 
+        ((new_visitor_tracker$points[i] - least_points_visitor)/
+           (most_points_visitor - least_points_visitor))*5
+    }
+    new_visitor_tracker
+    return(round(new_visitor_tracker$satisfaction, digits = 1))
+  }
+
+# === 6) initializing ==========================================================
 f.initializing <- function(){
   # creating a list of time steps that repeats each times tamp for each guest
   repeated_steps <- rep(time_steps[1], park_capacity)
@@ -309,7 +327,7 @@ f.initializing <- function(){
   return(visitor_tracker)
 }
 
-# === 5) move up in line function ==============================================
+# === 7) move up in line function ==============================================
 # the visitors that didn't get to go on a ride this time step move up one spot
 # in line
 # we create a new data frame that includes only the waiters 
@@ -323,7 +341,7 @@ f.move_up <- function(new_visitor_tracker){
 
 
 
-# === 6) get next time step ====================================================
+# === 8) get next time step ====================================================
 f.get_next_time_step <- function(){
   # step 1
   # the visitors that went on a ride in the previous time step now go to a new one
@@ -355,10 +373,10 @@ f.get_next_time_step <- function(){
   # step 8
   # get points
   visitor_tracker_merged$points <- f.get_new_points(visitor_tracker_merged)
-  # step 9
-  # get satisfaction score
-  visitor_tracker_merged$satisfaction <- 
-    f.get_new_satisfaction_score(complete_visitor_tracker, visitor_tracker_merged)
+  # # step 9
+  # # get satisfaction score
+  # visitor_tracker_merged$satisfaction <- 
+  #   f.get_new_satisfaction_score(complete_visitor_tracker, visitor_tracker_merged)
   return(visitor_tracker_merged)
 }
 
