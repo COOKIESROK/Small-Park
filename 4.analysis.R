@@ -10,6 +10,7 @@
 # ******************************************************************************
 # 1) read data
 # 2) descriptive stats visitor satisfaction
+# 3) experiment scatter plot
 
 # === 1) read data =============================================================
 # reading data
