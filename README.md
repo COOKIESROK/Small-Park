@@ -63,8 +63,3 @@ Geissler, G. L., & Rucks, C. T. (2011). The overall theme park experience: A vis
 Ohwada, H., Okada, M., & Kanamori, K. (2014). Route-Planning Algorithms for Amusement-Park Navigation. International Journal of Software Science and Computational Intelligence (IJSSCI), 6(2), 78–92. https://doi.org/10.4018/ijssci.2014040105
 Torres, E. N., Milman, A., & Park, S. (2017). Delighted or outraged? Uncovering key drivers of exceedingly positive and negative theme park guest experiences. Journal of Hospitality and Tourism Insights, 1(1), 65–85. https://doi.org/10.1108/JHTI-10-2017-0011
 
-
-
-
-![image](https://user-images.githubusercontent.com/79480336/146240787-6f686f06-5e82-4953-bfcf-cd2b4bc3bf78.png)
-
