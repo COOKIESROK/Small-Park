@@ -4,12 +4,14 @@
 #
 
 # This file calls the functions from 2.functions.R to create the main visitor 
-# tracker and update it after each time step. Currently to update a time step, 
-# the previous one is duplicated, time step number updated, and then the information
-# within the frame is also updated (using the functions I created). 
-# 
-# For some reason though, line 36 breaks the program because it claims the row names
-# are being duplicated. I have tried different methods to fix this but none seem to work.
+# tracker and update it after each time step. 
+# Each tie step is created by running each section of the file. I tried to create 
+# a loop (section 12) but ended up deciding against it because I wanted to 
+# save the separate time step trackers (I am not sure why I wanted to save them
+# but I did).
+# This file can be run one time step at a time or all at once. Section 11 saves
+# a csv file with the complete visitor tracker. This data file is used in
+# 4.analysis.R and 5.figures.R
 
 # === 1) visitor tracker ts 1===================================================
 visitor_tracker <- f.initializing()
