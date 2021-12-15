@@ -1,13 +1,18 @@
 
 # === description ==============================================================
-# This file contains all the functions needed to run file 3.
+# This file contains all the functions needed to run file 3.tracking.data.R
 # 1) f.ride_picker randomly assigns a ride to each visitor.
 # 2) f.get_spot_in_line and f.get_new_spot_in_line assign a spot in line to each 
 # visitor.
 # 3) f.get_status and f.get_new_status assign one of 6 states to each visitor.
-# 4) f.initializing sets up the main data frame (visitor_tracker for time step 1).
-# 5) f.move_up moves waiting visitors one spot up in line.
-# 6) f.get_next_time_step updates the main data frame to the next time step in 7 
+# 4) f.get_points and f.get_new_points assign a number of points to the visitors 
+# that went on a ride in the time step. The number of points depends on which 
+# ride they went on (points are cumulative). 
+# 5) f.get_satisfaction_score calculates the satisfaction of each visitor beased
+# on the amount of points they have. 
+# 6) f.initializing sets up the main data frame (visitor_tracker for time step 1).
+# 7) f.move_up moves waiting visitors one spot up in line.
+# 8) f.get_next_time_step updates the main data frame to the next time step in 9 
 # steps: 
   # 1. create riding_visitors data frame.
   # 2. assign riding_visitors a new ride.
@@ -16,6 +21,8 @@
   # 5. merge both data frames.
   # 6. update everyone's spot in line.
   # 7. update everyone's status.
+  # 8. update everyone's points. 
+  # 9. update everyone's satisfaction. 
 
 # === 1) ride picker ===========================================================
 # visitor_col <- as.data.frame(matrix(visitors))
@@ -216,9 +223,6 @@ f.get_points <- function(visitor_tracker){
   return(visitor_tracker$points)
 }
 
-# calling function to test
-visitor_tracker$points <- f.get_points(visitor_tracker)
-
 # updating points after first time step
 f.get_new_points <- function(visitor_tracker_merged){
   for(i in visitors){
@@ -265,7 +269,8 @@ f.get_satisfaction_score <- function(visitor_tracker){
   return(visitor_tracker$satisfaction)
 }
 
-# function that updates satisfaction of a customer
+# function that updates satisfaction again once we have a complete visitor_tracker
+# after each time step
 f.get_new_satisfaction_score <- 
   function(complete_visitor_tracker, visitor_tracker_merged){
   # calculating range of points earned by visitors
@@ -278,24 +283,6 @@ f.get_new_satisfaction_score <-
          (most_points_visitor - least_points_visitor))*5
   }
   return(round(visitor_tracker_merged$satisfaction, digits = 1))
-  }
-
-# function that updates satisfaction again once we have a complete visitor_tracker
-# after each time step
-f.get_newest_satisfaction_score <- 
-  function(complete_visitor_tracker, new_visitor_tracker){
-    # calculating range of points earned by visitors
-    points_range <- range(complete_visitor_tracker$points)
-    least_points_visitor <- range(complete_visitor_tracker$points)[1]
-    most_points_visitor <- range(complete_visitor_tracker$points)[2]
-    for(i in visitors){
-      i <-6
-      new_visitor_tracker$satisfaction[i] <- 
-        ((new_visitor_tracker$points[i] - least_points_visitor)/
-           (most_points_visitor - least_points_visitor))*5
-    }
-    new_visitor_tracker
-    return(round(new_visitor_tracker$satisfaction, digits = 1))
   }
 
 # === 6) initializing ==========================================================
