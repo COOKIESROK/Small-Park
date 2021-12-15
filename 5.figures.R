@@ -108,14 +108,14 @@ dev.off()
 # explanatory variable
 ride_caps <- c(25, 30, 35)
 # response variable
-mean_satis <- c(2.84, 3.26, 2.91)
+mean_satis <- c(2.84, 2.87, 2.91)
 
 # opening jpeg
 jpeg(paste(p.fig, "Experiment plot.jpeg", sep = ""), width = 650, 
      height = 650)
-plot(NA, ylab = "Mean vivisot satisfaction", ylim = c(0,5), xlim = c(0,4),
+plot(NA, ylab = "Mean vivisor satisfaction", ylim = c(0,5), xlim = c(0,4),
      xlab = "Ride capacity")
-plot(ride_caps, mean_satis, pch = 19, cex = 2)
+plot(ride_caps, mean_satis, pch = 19, cex = 2, col = "grey")
 lines(ride_caps, mean_satis, col = "red", lwd = 2)
 dev.off()
 
