@@ -1,63 +1,55 @@
 
-# === description ===========================================================================
-## brief description what the script file is about
-#
+# === description ==============================================================
 
 # This file calls the functions from 2.functions.R to create the main visitor 
 # tracker and update it after each time step. 
-# Each tie step is created by running each section of the file. I tried to create 
-# a loop (section 12) but ended up deciding against it because I wanted to 
-# save the separate time step trackers (I am not sure why I wanted to save them
-# but I did).
-# This file can be run one time step at a time or all at once. Section 11 saves
-# a csv file with the complete visitor tracker. This data file is used in
+# Each time step is created by running the loop cycle number of times. 
+# Section 2 generates a data file that is populated by the data created in 
+# section 3. This csv contains the complete visitor tracker and is used in
 # 4.analysis.R and 5.figures.R
 
 # === 1) visitor tracker ts 1===================================================
+# creating time step 1 (building the data frame from scratch)
 visitor_tracker <- f.initializing()
 
-# === 11) generating data file =================================================
+# saving first time step as newest time step
+new_visitor_tracker <- data.frame(visitor_tracker)
+
+# === 2) generating data file ==================================================
 # generating data file and saving in data folder
 visitor_tracker_file <- paste(p.data, "/", "CompleteVisitorTracker.csv", sep = "")
 
 # adding visitor tracker (first time step)
 write.csv(visitor_tracker, visitor_tracker_file)
 
-# === loop ====
+# === 3) cycle loop ============================================================
 #starting loop
 for(i in time_steps){
   # we skip the first time step because it was already created using initializing 
   # function
   if(i==1) next
   
-  # copying visitor tracker
-  visitor_tracker_i <-data.frame(visitor_tracker)
-  new_visitor_tracker <- visitor_tracker_i
-  
+  # visitor_tracker_i becomes the newest visitor tracker
+  visitor_tracker_i <- new_visitor_tracker
+
   # changing time step
   repeated_steps_i <- rep(time_steps[i], park_capacity)
-  new_visitor_tracker[1] <- repeated_steps_i
+  visitor_tracker_i[1] <- repeated_steps_i
   
   # we create a new data frame that includes only the waiters (this is also done 
   # within the next time step function but for some reason the program only runs 
   # if the line is repeated here)
-  waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
+  waiting_visitors <- visitor_tracker_i[visitor_tracker_i[4] >1,]
   
   # getting visitor tracker for next time step
-  new_visitor_tracker <- f.get_next_time_step()
+  visitor_tracker_i <- f.get_next_time_step()
   
-  # appending new_visitor_tracker to complete visitor tracker file
-  write.table(new_visitor_tracker, visitor_tracker_file, sep = ",", 
+  # appending visitor_tracker_i to complete visitor tracker file
+  write.table(visitor_tracker_i, visitor_tracker_file, sep = ",", 
               col.names = !file.exists(visitor_tracker_file), append = T)
   
-  # merging both visitor trackers into a single data frame
-  # complete_visitor_tracker <- rbind(visitor_tracker, new_visitor_tracker)
-  
-  # what if complete visitor tracker never existed
-  
-  
-  # turning new visitor tracker back into visitor tracker i
-  visitor_tracker_i <- new_visitor_tracker
+  # turning new_visitor_tracker back into visitor_tracker_i and it fucking works!
+  new_visitor_tracker <- visitor_tracker_i
 }
 
 
