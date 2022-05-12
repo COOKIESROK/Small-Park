@@ -197,57 +197,7 @@ f.get_new_status <- function(visitor_tracker_merged){
   return(visitor_tracker_merged)
 }
 
-# # === 4) cool points ===========================================================
-# # adding a points column
-# visitor_tracker$points <- 0
-# # creating a function that will give users points based on the rides they ride
-# f.get_points <- function(visitor_tracker){
-#   for(i in visitors){
-#     # looking for visitors riding coolest ride
-#     if(visitor_tracker$status[i] == "r_coolest"){
-#       # adding points for the visitors riding the coolest ride
-#       visitor_tracker$points[i] <- visitor_tracker$points[i] + cool_points[1] 
-#     }
-#     # looking for visitors riding okayest ride
-#     if(visitor_tracker$status[i] == "r_okayest"){
-#       # adding points for the visitors riding the okayest ride
-#       visitor_tracker$points[i] <- visitor_tracker$points[i] + cool_points[2]
-#     }
-#     # looking for visitors riding lamest ride
-#     if(visitor_tracker$status[i] == "r_lamest"){
-#       # adding points for the visitors riding the lamest ride
-#       visitor_tracker$points[i] <- visitor_tracker$points[i] + cool_points[3]
-#     }
-#   }
-#   return(visitor_tracker$points)
-# }
-# 
-# # updating points after first time step
-# f.get_new_points <- function(visitor_tracker_merged){
-#   for(i in visitors){
-#     # looking for visitors riding coolest ride
-#     if(visitor_tracker_merged$status[i] == "r_coolest"){
-#       # adding points for the visitors riding the coolest ride
-#       visitor_tracker_merged$points[i] <- visitor_tracker_merged$points[i] + cool_points[1] 
-#     }
-#     # looking for visitors riding okayest ride
-#     if(visitor_tracker_merged$status[i] == "r_okayest"){
-#       # adding points for the visitors riding the okayest ride
-#       visitor_tracker_merged$points[i] <- visitor_tracker_merged$points[i] + cool_points[2]
-#     }
-#     # looking for visitors riding lamest ride
-#     if(visitor_tracker_merged$status[i] == "r_lamest"){
-#       # adding points for the visitors riding the lamest ride
-#       visitor_tracker_merged$points[i] <- visitor_tracker_merged$points[i] + cool_points[3]
-#     }
-#   }
-#   #return(visitor_tracker_merged$points)
-#   
-#   # what if it simply returned the tracker 
-#   return(visitor_tracker_merged)
-# }
-
-# === 4) messing with cool points function =====================================
+# === 4) cool points ===========================================================
 # adding a points column
 visitor_tracker$points <- 0
 # creating a function that will give users points based on the rides they ride
@@ -339,8 +289,40 @@ f.get_new_satisfaction_score <-
     return(round(visitor_tracker_merged$satisfaction, digits = 1))
   }
 
+# === wait time =====
+# we want to know how many time steps visitors spend waiting 
+# adding a column to visitor tracker
+visitor_tracker$waited <- 0
+# a function that takes in visitor_tracker and adds one waited time_step to 
+# each waiting visitor
+f.get_waited <- function(visitor_tracker){
+  for(i in visitors){
+    if(visitor_tracker$spot_in_line[i] > 1){
+      visitor_tracker$waited[i] <- visitor_tracker$waited[i] + 1
+    }
+  }
+  return(visitor_tracker$waited)
+}
+
+# add to initializer
+#visitor_tracker$waited <- f.get_waited(visitor_tracker)
+
+# updating waited after first time step
+f.get_new_waited <- function(visitor_tracker_merged){
+  for(i in visitors){
+    if(visitor_tracker_merged$spot_in_line[i] > 1){
+      visitor_tracker_merged$waited[i] <- visitor_tracker_merged$waited[i] + 1
+    }
+  }
+  return(visitor_tracker_merged$waited)
+}
+
+#add to get_next_time_step
+#visitor_tracker_merged$waited <- f.get_new_waited(visitor_tracker_merged)
+
+
 # === 6) initializing ==========================================================
-# functin that builds the original data base from scratch (1st time step)
+# function that builds the original data base from scratch (1st time step)
 f.initializing <- function(){
   # creating a list of time steps that repeats each times tamp for each guest
   repeated_steps <- rep(time_steps[1], park_capacity)
@@ -365,6 +347,10 @@ f.initializing <- function(){
   visitor_tracker$satisfaction <- 0
   # calculating satisfaction based on points
   visitor_tracker$satisfaction <- f.get_satisfaction_score(visitor_tracker)
+  # adding waited column to data frame
+  visitor_tracker$waited <- 0
+  # adding a waited time step to all waiting visitors
+  visitor_tracker$waited <- f.get_waited(visitor_tracker)
   # return visitor_tracker
   return(visitor_tracker)
 }
@@ -373,10 +359,10 @@ f.initializing <- function(){
 # the visitors that didn't get to go on a ride this time step move up one spot
 # in line
 # we create a new data frame that includes only the waiters 
-waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
+waiting_visitors <- visitor_tracker_i[visitor_tracker_i[4] >1,]
 
 # move up in line
-f.move_up <- function(new_visitor_tracker){
+f.move_up <- function(visitor_tracker_i){
   waiting_visitors$spot_in_line <- waiting_visitors$spot_in_line - 1
   return(waiting_visitors)
 }
@@ -388,42 +374,41 @@ f.get_next_time_step <- function(){
   # step 1
   # the visitors that went on a ride in the previous time step now go to a new one
   # we create a new data frame that includes only the riders 
-  riding_visitors <- new_visitor_tracker[new_visitor_tracker[4] == 1,]
+  riding_visitors <- visitor_tracker_i[visitor_tracker_i[4] == 1,]
   # step 2
   # we randomly assign them a new ride
-  next_ride <- sample(x = rides, size = nrow(riding_visitors), 
-                      replace = TRUE)
+  next_ride <- sample(x = rides, size = nrow(riding_visitors),
+  replace = TRUE)
   # we replace the old ride with the new one in the data frame
   riding_visitors$ride <- next_ride
   # step 3
   # the visitors that didn't get to go on a ride this time step move up one spot
   # in line
   # we create a new data frame that includes only the waiters 
-  waiting_visitors <- new_visitor_tracker[new_visitor_tracker[4] >1,]
+  waiting_visitors <- visitor_tracker_i[visitor_tracker_i[4] >1,]
   # step 4
-  waiting_visitors <- f.move_up(new_visitor_tracker)
+  waiting_visitors <- f.move_up(visitor_tracker_i)
   # step 5
   # now we merge waiting and riding visitors
-  # testing changing visitor_tracker merged to visitor_tracker
   visitor_tracker_merged <- rbind(waiting_visitors, riding_visitors)
   # step 6 
-  # update spot in line
+  # we update spot in line
   visitor_tracker_merged <- f.get_new_spot_in_line(visitor_tracker_merged)
   # step 7 
-  # update status
+  # then we update status
   visitor_tracker_merged <- f.get_new_status(visitor_tracker_merged)
   # returns visitor tracker merged
   # step 8
-  # get points
-  #visitor_tracker_merged$points <- f.get_new_points(visitor_tracker_merged)
-  
-  # testting for returning tracker rather than column
+  # then we get points
   visitor_tracker_merged <- f.get_new_points(visitor_tracker_merged)
-  
   # step 9
-  # get satisfaction score
+  # we get satisfaction score
   visitor_tracker_merged$satisfaction <-
     f.get_new_satisfaction_score(visitor_tracker_merged)
+  
+  # we add one waited time step to waiting visitors
+  visitor_tracker_merged$waited <- f.get_new_waited(visitor_tracker_merged)
+  
   return(visitor_tracker_merged)
 }
 
