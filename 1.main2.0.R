@@ -22,14 +22,14 @@
 
 wk.dir <- getwd()
 # max number of visitors
-park_capacity <- 12
+park_capacity <- 120
 visitors <- c(1:park_capacity)
 # max number of visitors that can ride a ride at each time
-ride_capacity <- 3
+ride_capacity <- 30
 # the 3 rides in the park
 rides <- c("coolest", "okayest", "lamest")
 # the number of time steps in a day
-cycle <- 4
+cycle <- 10
 time_steps <- c(1:cycle)
 # cool points that each ride gives a visitor (coolest, okayest, lamest)
 cool_points <- c(10,5,1)
