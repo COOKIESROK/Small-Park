@@ -70,7 +70,7 @@ final_var_satisfaction <-
   round(var(visitor_data$satisfaction[visitor_data$time_step == cycle]), 
         digits = 2)
 
-# 3) descriptive stats waiting =================================================
+# === 3) descriptive stats waiting =================================================
 # looking at the end of the cycle
 final_visitor_tracker <- visitor_data[visitor_data$time_step == cycle,]
 
@@ -106,3 +106,17 @@ final_var_waited <-
 
 
 
+
+# === 4) mean points ====
+# creating a little data frame to store mean points per data frame
+mean_points_tracker <- as.data.frame(time_steps)
+
+#adding a mean points column to mean points tracker data frame
+mean_points_tracker$mean_points <- 0
+
+# creating a loop for calculating mean points for each time_step 
+for(i in time_steps){
+  mean_points_i <- round(mean(visitor_data$points[visitor_data$time_step == i]),
+                          digits = 1)
+  mean_points_tracker$mean_points[i] <- mean_points_i
+    }
