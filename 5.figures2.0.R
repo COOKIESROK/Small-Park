@@ -12,50 +12,68 @@ visitor_data <- read.csv(paste(p.data, "/", "CompleteVisitorTracker.csv", sep = 
 head(visitor_data)
 str(visitor_data)
 
-# === 2) visitor distribution time step 1 ======================================
-# opening jpeg
-jpeg(paste(p.fig, "Visitor distribution time step 1.jpeg", sep = ""), width = 650, 
-     height = 650)
-# bar plot of visitor distribution at time step 1
-visitor_dist_timestep_1 <- 
-  table(complete_visitor_tracker[complete_visitor_tracker$time_step == 1,]$ride)
-bar_plot1 <- barplot(visitor_dist_timestep_1, ylab = "Number of visitors", 
-        xlab = "Ride", main = "Visitor distribution time step 1",
-        ylim = c(0, park_capacity))
-# the line marks rice capacity (everyone above the line is waiting in line)
-abline(h = ride_capacity, col = "red", lwd = 2)
-dev.off()
+# === loop for visitor distribution bar plot =====
+# starting loop
+for(i in time_steps){
+  # opening jpeg
+  jpeg(paste(p.fig, "Visitor distribution time step", i, ".jpeg", sep = ""), width = 650, 
+       height = 650)
+  # bar plot of visitor distribution at time step i
+  visitor_dist_timestep_i <- 
+    table(visitor_data[visitor_data$time_step == i,]$ride)
+  bar_plot_i <- barplot(visitor_dist_timestep_i, ylab = "Number of visitors", 
+                       xlab = "Ride", main = (paste("Visitor distribution time step", 
+                                                    i, ".jpeg", sep = "")),
+                       ylim = c(0, park_capacity))
+  # the line marks ride capacity (everyone above the line is waiting in line)
+  abline(h = ride_capacity, col = "red", lwd = 2)
+  dev.off()
+}
 
-# === 3) visitor distribution time step 2 ======================================
-# opening jpeg
-jpeg(paste(p.fig, "Visitor distribution time step 2.jpeg", sep = ""), width = 650, 
-     height = 650)
-# bar plot of visitor distribution at time step 2
-visitor_dist_timestep_2 <- 
-  table(complete_visitor_tracker[complete_visitor_tracker$time_step == 2,]$ride)
-barplot(visitor_dist_timestep_2, ylab = "Number of visitors", 
-        xlab = "Ride", main = "Visitor distribution time step 2",
-        ylim = c(0, park_capacity))
-abline(h = ride_capacity, col = "red", lwd = 2)
-dev.off()
+# # === 5) real cumulative points plot ===========================================
+# # creating an empty data frame with the time step as the first column and each
+# # visitor as the next column
+# time_steps_data <- as.data.frame(matrix(NA, ncol = park_capacity+1, nrow = cycle))
+# colnames(time_steps_data) <- c("time_step", visitors)
+# time_steps_data$time_step <- time_steps
+# head(time_steps_data)
+# 
+# # adding the (already cumulative) points to the data frame
+# for(i in visitors){
+#   time_steps_data[time_steps, i+1]<- 
+#     visitor_data$points[visitor_data$visitors == i]
+# }
+# 
+# # adding extra column to time steps data frame for mean points
+# time_steps_data$mean_points <- 0
+# 
+# # populating the mean points column with mean points calculated in 4.analysis
+# time_steps_data$mean_points <- mean_points_tracker[2]
+# 
+# # opening jpeg
+# jpeg(paste(p.fig, "Cumulative visitor points.jpeg", sep = ""), width = 650, 
+#      height = 650)
+# 
+# # adding 1 to time steps so i can have an extra line for the mean
+# park_capacity_plus_1 <- park_capacity + 1
+# 
+# # plot
+# # specifying colors
+# # the red line is created so I can focus on a particular guest's experience
+# col.t <- c(rep("grey", park_capacity), "red")
+# # specifying y limit
+# ylim.t <- c(0, max(time_steps_data))
+# #plotting
+# plot(NA, xlim =  c(1, cycle), ylim = ylim.t, ylab = "cumulative points", 
+#      xlab = "time step")
+# for(i in time_steps){
+#   lines(time_steps, time_steps_data[time_steps, i + 1], col = col.t[i], 
+#         lwd = 2)
+# }
+# 
+# dev.off()
 
-# === 4) visitor distribution time step 3 ======================================
-# opening jpeg
-jpeg(paste(p.fig, "Visitor distribution time step 3.jpeg", sep = ""), width = 650, 
-     height = 650)
-# bar plot of visitor distribution at time step 3
-visitor_dist_timestep_3 <- 
-  table(complete_visitor_tracker[complete_visitor_tracker$time_step == 3,]$ride)
-barplot(visitor_dist_timestep_3, ylab = "Number of visitors", 
-        xlab = "Ride", main = "Visitor distribution time step 3",
-        ylim = c(0, park_capacity))
-abline(h = ride_capacity, col = "red", lwd = 2)
-dev.off()
-
-# === 5) real cumulative points plot ===========================================
-# After realizing my points were already cumulative I just needed to adjust my 
-# certain parts of my plot (i no longer need the cum sum function) 
-
+# === 5) messing with real cumulative points plot to add mean red line =========
 # creating an empty data frame with the time step as the first column and each
 # visitor as the next column
 time_steps_data <- as.data.frame(matrix(NA, ncol = park_capacity+1, nrow = cycle))
@@ -69,24 +87,41 @@ for(i in visitors){
     visitor_data$points[visitor_data$visitors == i]
 }
 
+# adding extra column to time steps data frame for mean points
+time_steps_data$mean_points <- 0
+
+# populating the mean points column with mean points calculated in 4.analysis
+time_steps_data$mean_points <- mean_points_tracker[2]
+
 # opening jpeg
 jpeg(paste(p.fig, "Cumulative visitor points.jpeg", sep = ""), width = 650, 
      height = 650)
 
+# adding 1 to time steps so i can have an extra line for the mean
+park_capacity_plus_1 <- park_capacity + 1
+visitors_plus_1 <- c(1:park_capacity_plus_1)
+
 # plot
 # specifying colors
-# the red line is created so i can focus on a particular guest's experience
-col.t <- c("red", rep("grey", park_capacity-1))
+# the red line is created so I can focus on a particular guest's experience
+col.t <- c(rep("grey", park_capacity))
 # specifying y limit
 ylim.t <- c(0, max(time_steps_data))
 #plotting
 plot(NA, xlim =  c(1, cycle), ylim = ylim.t, ylab = "cumulative points", 
      xlab = "time step")
-for(i in time_steps){
-  lines(time_steps, time_steps_data[time_steps, i+1], col = col.t[i], 
+# each visitors' lines
+for(i in visitors){
+  lines(time_steps, time_steps_data[time_steps, i + 1], col = col.t[i],
+        lwd = 2)
+}
+# the mean points line
+for(i in park_capacity){
+  lines(unlist(time_steps), unlist(time_steps_data[time_steps, 14]), col = "red",
         lwd = 2)
 }
 dev.off()
+
 # === 6) satisfaction distribution =============================================
 # opening jpeg
 jpeg(paste(p.fig, "Overall Visitor Satisfaction.jpeg", sep = ""), width = 650, 
