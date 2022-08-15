@@ -31,7 +31,7 @@ for(i in time_steps){
   
   # visitor_tracker_i becomes the newest visitor tracker
   visitor_tracker_i <- new_visitor_tracker
-
+  
   # changing time step
   repeated_steps_i <- rep(time_steps[i], park_capacity)
   visitor_tracker_i$time_step <- repeated_steps_i
@@ -87,7 +87,7 @@ for(i in time_steps){
   # we create a new data frame that includes only the waiters (this is also done 
   # within the next time step function but for some reason the program only runs 
   # if the line is repeated here)
-  waiting_visitors <- visitor_tracker_i[visitor_tracker_i$spot_in_line >1,]
+  waiting_visitors <- visitor_tracker_i[visitor_tracker_i$spot_in_line > 1,]
   
   # getting visitor tracker for next time step
   visitor_tracker_i <- f.get_next_time_step_cooler_better()
