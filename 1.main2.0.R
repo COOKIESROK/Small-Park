@@ -33,18 +33,20 @@ colnames(rides) <- "ride_name"
 # adding to rides data frame
 rides$ride_capacity <- c(2, 2, 2, 2)
 
+# cool points that each ride gives a visitor (in the same order as the rides - 
+# coolest first)
+rides$ride_points <- c(10, 5, 1, 12)
 
 # probability a rider will choose a given ride
 # the first number corresponds to the probability of the coolest ride (see rides)
 # adding to rides data frame
 rides$ride_prob <- c(0.8, 0.4, 0.2, 0.8)
 
-# the number of time steps in a day
-cycle <- 12
+# how many time steps each ride lasts 
+rides$ride_duration <- c(1, 2, 3, 4)
 
-# cool points that each ride gives a visitor (in the same order as the rides - 
-# coolest first)
-each_ride_points <- c(10, 5, 1, 12)
+# the number of time steps in a day
+cycle <- 4
 
 # number of times each strategy will run
 run_for <- 10
@@ -69,13 +71,23 @@ for(i in 1:length(rides)) {
   states <- c(states, new_states) 
 }
 
+# creating stages for the rides, a ride can either be in progress or in its final 
+# time step
+stages <- vector()
+# filling in the states vector
+for(i in 1:length(rides)) {
+  new_stages <- c(paste("p_", rides$ride_name[i], sep = ""), 
+                  paste("f_", rides$ride_name[i], sep = ""))     
+  stages <- c(stages, new_stages) 
+}
+
 # counting time steps
 time_steps <- c(1:cycle)
 
 # loop for cool points
 cool_points <- vector()
-for(i in 1:length(each_ride_points)){
-  add_points <- c(each_ride_points[i], 0)
+for(i in 1:length(rides$ride_points)){
+  add_points <- c(rides$ride_points[i], 0)
   cool_points <- c(cool_points, add_points)
 }
 
