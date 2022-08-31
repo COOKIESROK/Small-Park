@@ -33,7 +33,7 @@ colnames(rides) <- "ride_name"
 # adding to rides data frame
 rides$ride_capacity <- c(2, 2, 2, 2)
 
-# cool points that each ride gives a visitor (in the same order as the rides - 
+# fun points that each ride gives a visitor (in the same order as the rides - 
 # coolest first)
 rides$ride_points <- c(10, 5, 1, 12)
 
@@ -60,39 +60,39 @@ visitors <- c(1:park_capacity)
 
 # creating states for visitors, they can either be riding or waiting to ride
 # any of the rides
-# this vector will be replaced with the loop I just created 
-# states <- c("r_coolest", "w_coolest", "r_okayest", "w_okayest", "r_lamest", 
-#             "w_lamest")
 states <- vector()
 # filling in the states vector
-for(i in 1:length(rides)) {
+for(i in 1:nrow(rides)) {
   new_states <- c(paste("r_", rides$ride_name[i], sep = ""), 
                   paste("w_", rides$ride_name[i], sep = ""))     
   states <- c(states, new_states) 
 }
 
+
+
+#COMMENTED OUT FOR TESTING DELETE IF EVERYTHING WORKS FINE WITHOUT IT
 # creating stages for the rides, a ride can either be in progress or in its final 
 # time step
-stages <- vector()
-# filling in the states vector
-for(i in 1:length(rides)) {
-  new_stages <- c(paste("p_", rides$ride_name[i], sep = ""), 
-                  paste("f_", rides$ride_name[i], sep = ""))     
-  stages <- c(stages, new_stages) 
-}
+# stages <- vector()
+# # filling in the states vector
+# for(i in 1:length(rides)) {
+#   new_stages <- c(paste("p_", rides$ride_name[i], sep = ""), 
+#                   paste("f_", rides$ride_name[i], sep = ""))     
+#   stages <- c(stages, new_stages) 
+# }
 
 # counting time steps
 time_steps <- c(1:cycle)
 
-# loop for cool points
-cool_points <- vector()
+# loop for fun points
+fun_points <- vector()
 for(i in 1:length(rides$ride_points)){
   add_points <- c(rides$ride_points[i], 0)
-  cool_points <- c(cool_points, add_points)
+  fun_points <- c(fun_points, add_points)
 }
 
 # true max satisfaction would come from riding the coolest ride every time step
-true_max_satisfaction <- cool_points[1]*cycle
+true_max_satisfaction <- fun_points[1]*cycle
 
 # counting runs
 runs <- c(1:run_for)
