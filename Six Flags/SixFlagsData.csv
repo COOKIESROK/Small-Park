@@ -1,0 +1,354 @@
+﻿Sample,Park,Ride,Average wait time,Type of ride,Distance from main gate,Min-max standardized distance,Distance Recoded
+Six Flags,La Ronde,Monstre,48,Thrill,290,0.56,Far
+Six Flags,La Ronde,Toboggan Nordique,46,Family,160,0.26,Close
+Six Flags,La Ronde,Titan,31,Thrill,370,0.74,Far
+Six Flags,La Ronde,Splash,30,Thrill,220,0.4,Close
+Six Flags,La Ronde,Dragon,27,Family,210,0.37,Close
+Six Flags,La Ronde,Minirail,21,Family,150,0.23,Closest
+Six Flags,La Ronde,La Marche du mille-pattes,20,Kids,120,0.16,Closest
+Six Flags,La Ronde,Boomerang,20,Thrill,200,0.35,Close
+Six Flags,La Ronde,Chaos,20,Thrill,250,0.47,Close
+Six Flags,La Ronde,Goliath,19,Thrill,480,1,Farthest
+Six Flags,La Ronde,Orbite,18,Thrill,200,0.35,Close
+Six Flags,La Ronde,Autos Tamponneuses,17,Family,250,0.47,Close
+Six Flags,La Ronde,Vampire,16,Thrill,360,0.72,Far
+Six Flags,La Ronde,Disco Ronde,16,Family,220,0.4,Close
+Six Flags,La Ronde,Ednör,16,Thrill,360,0.72,Far
+Six Flags,La Ronde,Phoenix,15,Family,230,0.42,Close
+Six Flags,La Ronde,Joyeux Moussaillons,15,Kids,100,0.12,Closest
+Six Flags,La Ronde,Bateau Pirate,15,Thrill,230,0.42,Close
+Six Flags,La Ronde,Démon,14,Thrill,250,0.47,Close
+Six Flags,La Ronde,Vol Ultime,13,Thrill,250,0.47,Close
+Six Flags,La Ronde,Condor,13,Family,210,0.37,Close
+Six Flags,La Ronde,Manitou,13,Thrill,210,0.37,Close
+Six Flags,La Ronde,Tchou Tchou,12,Kids,140,0.21,Closest
+Six Flags,La Ronde,La Danse des Bestioles,12,Kids,60,0.02,Closest
+Six Flags,La Ronde,Gravitor,12,Family,230,0.42,Close
+Six Flags,La Ronde,Marais Enchanté,12,Kids,90,0.09,Closest
+Six Flags,La Ronde,Grande Roue,12,Family,130,0.19,Closest
+Six Flags,La Ronde,Tourbillon,12,Family,250,0.47,Close
+Six Flags,La Ronde,Vertigo,11,Thrill,250,0.47,Close
+Six Flags,La Ronde,La Grande Envolée,11,Family,150,0.23,Closest
+Six Flags,La Ronde,Tour de Ville,10,Family,310,0.6,Far
+Six Flags,La Ronde,Pommes d’Api,10,Kids,90,0.09,Closest
+Six Flags,La Ronde,Monsieur L’Arbre,10,Kids,60,0.02,Closest
+Six Flags,La Ronde,Le Galopant,9,Kids,310,0.6,Far
+Six Flags,La Ronde,Ourson Fripon,9,Kids,70,0.05,Closest
+Six Flags,La Ronde,Grand Carousel,9,Kids,50,0,Closest
+Six Flags,La Ronde,Aqua Twist,8,Family,170,0.28,Close
+Six Flags,La Ronde,Air Papillon,8,Kids,100,0.12,Closest
+Six Flags,Discovery Kingdom,THE JOKER,38,Thrill,200,0.33,Close
+Six Flags,Discovery Kingdom,SUPERMAN Ultimate Flight,32,Thrill,200,0.33,Close
+Six Flags,Discovery Kingdom,Wonder Woman Lasso of Truth,31,Thrill,170,0.23,Closest
+Six Flags,Discovery Kingdom,White Water Safari,25,Family,200,0.33,Close
+Six Flags,Discovery Kingdom,Batman The Ride,22,Thrill,250,0.5,Close
+Six Flags,Discovery Kingdom,Medusa,20,Thrill,300,0.67,Far
+Six Flags,Discovery Kingdom,Kong,19,Thrill,250,0.5,Close
+Six Flags,Discovery Kingdom,Boomerang Coast to Coaster,17,Thrill,170,0.23,Closest
+Six Flags,Discovery Kingdom,Monsoon Falls,15,Family,150,0.17,Closest
+Six Flags,Discovery Kingdom,SkyScreamer,15,Thrill,140,0.13,Closest
+Six Flags,Discovery Kingdom,Cobra,13,Kids,130,0.1,Closest
+Six Flags,Discovery Kingdom,Scat-A-Bout,10,Family,150,0.17,Closest
+Six Flags,Discovery Kingdom,THE FLASH: Vertical Velocity,9,Family,100,0,Closest
+Six Flags,Discovery Kingdom,Ark,9,Kids,210,0.37,Close
+Six Flags,Discovery Kingdom,Dare Devil Chaos Coaster,9,Thrill,200,0.33,Close
+Six Flags,Discovery Kingdom,Hammerhead Shark,7,Kids,180,0.27,Close
+Six Flags,Discovery Kingdom,Thrilla Gorilla,6,Kids,230,0.43,Close
+Six Flags,Discovery Kingdom,Monkey Business,6,Family,230,0.43,Close
+Six Flags,Discovery Kingdom,Wave Swinger,6,Family,100,0,Closest
+Six Flags,Discovery Kingdom,Tsunami Soaker,6,Kids,350,0.83,Farthest
+Six Flags,Discovery Kingdom,Seaport Carousel,5,Family,200,0.33,Close
+Six Flags,Discovery Kingdom,Frostee's Skating Rink,5,Seasonal,400,1,Farthest
+Six Flags,Fiesta Texas,Gully Washer,88,Family,350,0.71,Far
+Six Flags,Fiesta Texas,Boomerang,70,Thrill,170,0.2,Closest
+Six Flags,Fiesta Texas,Iron Rattler,43,Thrill,370,0.77,Farthest
+Six Flags,Fiesta Texas,White Water Rapids,42,Family,220,0.34,Close
+Six Flags,Fiesta Texas,The Joker Carnival of Chaos,34,Thrill,300,0.57,Far
+Six Flags,Fiesta Texas,Poltergeist,29,Thrill,200,0.29,Close
+Six Flags,Fiesta Texas,Dare Devil Dive Flying Machines,27,Thrill,450,1,Farthest
+Six Flags,Fiesta Texas,Road Runner Express,25,Kids,360,0.74,Far
+Six Flags,Fiesta Texas,SUPERMAN: Krypton Coaster,24,Thrill,320,0.63,Far
+Six Flags,Fiesta Texas,WONDER WOMAN Golden Lasso Coaster,23,Thrill,310,0.6,Far
+Six Flags,Fiesta Texas,Pandemonium,15,Thrill,370,0.77,Farthest
+Six Flags,Fiesta Texas,Scream,15,Thrill,240,0.4,Close
+Six Flags,Fiesta Texas,BATMAN: The Ride,14,Thrill,220,0.34,Close
+Six Flags,Fiesta Texas,Goliath,14,Thrill,100,0,Closest
+Six Flags,Fiesta Texas,Pirates of the Deep Sea,9,Family,300,0.57,Far
+Six Flags,Great Adventure,Aftermath,17,Seasonal,300,0.71,Far
+Six Flags,Great Adventure,Air Jumbo,6,Family,250,0.57,Far
+Six Flags,Great Adventure,Air Safari,5,Family,250,0.57,Far
+Six Flags,Great Adventure,BATMAN: The Ride,27,Thrill,200,0.43,Close
+Six Flags,Great Adventure,Big Top Terror: Forgotten Carnival 3-D,18,Seasonal,230,0.51,Far
+Six Flags,Great Adventure,Big Wheel,11,Family,120,0.2,Closest
+Six Flags,Great Adventure,Bizarro,23,Thrill,200,0.43,Close
+Six Flags,Great Adventure,Blood Shed,16,Seasonal,250,0.57,Far
+Six Flags,Great Adventure,Buccaneer,7,Family,190,0.4,Close
+Six Flags,Great Adventure,Bugaboo,5,Family,90,0.11,Closest
+Six Flags,Great Adventure,Bugs Bunny Camp Carousel,5,Family,300,0.71,Far
+Six Flags,Great Adventure,Bugs Bunny Ranger Pilots,5,Family,110,0.17,Closest
+Six Flags,Great Adventure,Carousel,8,Family,150,0.29,Close
+Six Flags,Great Adventure,Congo Rapids,12,Kids,300,0.71,Far
+Six Flags,Great Adventure,CYBORG™ Cyber Spin,6,Thrill,150,0.29,Close
+Six Flags,Great Adventure,Daffy's Hot Air Balloons,5,Family,120,0.2,Closest
+Six Flags,Great Adventure,Dare Devil Dive,10,Thrill,70,0.06,Closest
+Six Flags,Great Adventure,DejaVu,5,Kids,150,0.29,Close
+Six Flags,Great Adventure,Enchanted Teacups,9,Family,140,0.26,Close
+Six Flags,Great Adventure,Fears,10,Seasonal,90,0.11,Closest
+Six Flags,Great Adventure,Fender Benders,9,Kids,170,0.34,Close
+Six Flags,Great Adventure,Foghorn Leghorn's Stagecoach Express,5,Family,100,0.14,Closest
+Six Flags,Great Adventure,Great American Road Race,6,Family,100,0.14,Closest
+Six Flags,Great Adventure,GREEN LANTERN,32,Thrill,130,0.23,Closest
+Six Flags,Great Adventure,HARLEY QUINN Crazy Train,7,Family,90,0.11,Closest
+Six Flags,Great Adventure,Houdini’s Great Escape,15,Family,50,0,Closest
+Six Flags,Great Adventure,Jersey Devil Coaster,29,Thrill,350,0.86,Farthest
+Six Flags,Great Adventure,JUSTICE LEAGUE: Battle for Metropolis,29,Kids,150,0.29,Close
+Six Flags,Great Adventure,Kingda Ka,45,Thrill,400,1,Farthest
+Six Flags,Great Adventure,Lil’ Devil Coaster,5,Family,350,0.86,Farthest
+Six Flags,Great Adventure,Nitro,40,Thrill,250,0.57,Far
+Six Flags,Great Adventure,Parachute Training Center: Edwards AFB,6,Family,200,0.43,Close
+Six Flags,Great Adventure,Reflections of the Dead,16,Seasonal,300,0.71,Far
+Six Flags,Great Adventure,Runaway Mine Train,14,Kids,150,0.29,Close
+Six Flags,Great Adventure,Saw Mill Log Flume,34,Kids,200,0.43,Close
+Six Flags,Great Adventure,Skull Mountain,18,Kids,200,0.43,Close
+Six Flags,Great Adventure,SkyScreamer,25,Thrill,110,0.17,Closest
+Six Flags,Great Adventure,Skyway — Lakefront,19,Family,180,0.37,Close
+Six Flags,Great Adventure,Skyway Frontier Adventures,15,Family,200,0.43,Close
+Six Flags,Great Adventure,Slingshot,7,Thrill,150,0.29,Close
+Six Flags,Great Adventure,SUPERMAN: Ultimate Flight,42,Thrill,200,0.43,Close
+Six Flags,Great Adventure,Swashbuckler,5,Kids,170,0.34,Close
+Six Flags,Great Adventure,Tango,5,Family,300,0.71,Far
+Six Flags,Great Adventure,THE DARK KNIGHT Coaster,18,Kids,200,0.43,Close
+Six Flags,Great Adventure,THE JOKER,40,Thrill,200,0.43,Close
+Six Flags,Great Adventure,The Lab,17,Seasonal,250,0.57,Far
+Six Flags,Great Adventure,The Manor,16,Seasonal,270,0.63,Far
+Six Flags,Great Adventure,Twister,5,Thrill,200,0.43,Close
+Six Flags,Great Adventure,Wicked Woods,12,Seasonal,180,0.37,Close
+Six Flags,Great Adventure,Wile E. Coyote Canyon Blaster,5,Family,280,0.66,Far
+Six Flags,Great Adventure,WONDER WOMAN™ Lasso of Truth,51,Thrill,250,0.57,Far
+Six Flags,Great Adventure,Xpedition Dino: Survival,10,Seasonal,300,0.71,Far
+Six Flags,Great Adventure,Zumanjaro: Drop of Doom,8,Seasonal,310,0.74,Far
+Six Flags,Great America,American Eagle,33,Thrill,250,0.5,Close
+Six Flags,Great America,BATMAN The Ride,40,Thrill,200,0.38,Close
+Six Flags,Great America,Demon,26,Thrill,260,0.53,Far
+Six Flags,Great America,Giant Drop,27,Thrill,310,0.65,Far
+Six Flags,Great America,Goliath,54,Thrill,450,1,Farthest
+Six Flags,Great America,JUSTICE LEAGUE: Battle for Metropolis,36,Kids,350,0.75,Far
+Six Flags,Great America,Mardi Gras Hangover,37,Thrill,200,0.38,Close
+Six Flags,Great America,Maxx Force,46,Thrill,50,0,Closest
+Six Flags,Great America,Raging Bull,52,Thrill,350,0.75,Far
+Six Flags,Great America,Rue Le Dodge,12,Family,200,0.38,Close
+Six Flags,Great America,SUPERMAN Ultimate Flight,62,Thrill,200,0.38,Close
+Six Flags,Great America,THE DARK KNIGHT Coaster,54,Family,250,0.5,Close
+Six Flags,Great America,THE JOKER Free Fly Coaster,49,Thrill,200,0.38,Close
+Six Flags,Great America,Viper,33,Thrill,250,0.5,Close
+Six Flags,Great America,Whizzer,34,Family,110,0.15,Closest
+Six Flags,Great America,X Flight,56,Thrill,210,0.4,Close
+Six Flags,Magic Mountain,Apocalypse,32,Thrill,360,0.68,Far
+Six Flags,Magic Mountain,BATMAN The Ride,17,Thrill,460,1,Farthest
+Six Flags,Magic Mountain,Buccaneer,7,Family,300,0.48,Close
+Six Flags,Magic Mountain,Canyon Blaster,6,Family,220,0.23,Closest
+Six Flags,Magic Mountain,CraZanity,30,Thrill,300,0.48,Close
+Six Flags,Magic Mountain,Daffy’s Adventure Tours,5,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,Dive Devil,5,Thrill,340,0.61,Far
+Six Flags,Magic Mountain,Elmer’s Weather Balloons,6,Family,220,0.23,Closest
+Six Flags,Magic Mountain,Full Throttle,39,Thrill,340,0.61,Far
+Six Flags,Magic Mountain,Gold Rusher,10,Kids,250,0.32,Close
+Six Flags,Magic Mountain,Goliath,29,Thrill,350,0.65,Far
+Six Flags,Magic Mountain,Grand American Carousel,8,Family,150,0,Closest
+Six Flags,Magic Mountain,Jammin’ Bumpers,7,Family,280,0.42,Close
+Six Flags,Magic Mountain,Jet Stream,21,Family,300,0.48,Close
+Six Flags,Magic Mountain,JUSTICE LEAGUE: Battle for Metropolis,5,Family,320,0.55,Far
+Six Flags,Magic Mountain,Lex Luthor: Drop of Doom,5,Thrill,400,0.81,Farthest
+Six Flags,Magic Mountain,Magic Flyer,5,Family,320,0.55,Far
+Six Flags,Magic Mountain,Merrie Melodies Carousel,6,Family,220,0.23,Closest
+Six Flags,Magic Mountain,Ninja,24,Kids,280,0.42,Close
+Six Flags,Magic Mountain,Pacific Speedway,5,Family,340,0.61,Far
+Six Flags,Magic Mountain,Pepe LePew’s Tea Party,6,Family,220,0.23,Closest
+Six Flags,Magic Mountain,Road Runner Express,7,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,Roaring Rapids,33,Family,380,0.74,Far
+Six Flags,Magic Mountain,Scrambler,5,Family,260,0.35,Close
+Six Flags,Magic Mountain,Scream,15,Thrill,450,0.97,Farthest
+Six Flags,Magic Mountain,Speedy Gonzales Hot Rod Racers,6,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,SUPERMAN: Escape from Krypton,26,Thrill,230,0.26,Close
+Six Flags,Magic Mountain,Swashbuckler,6,Family,320,0.55,Far
+Six Flags,Magic Mountain,Sylvester’s Pounce and Bounce,6,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,Tatsu,48,Thrill,250,0.32,Close
+Six Flags,Magic Mountain,Taz’s Trucking Co.,5,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,The Flash Speed Force,7,Family,400,0.81,Farthest
+Six Flags,Magic Mountain,The Looney Tunes Lodge,5,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,The New Revolution – Classic,23,Thrill,200,0.16,Closest
+Six Flags,Magic Mountain,THE RIDDLER’S Revenge,17,Thrill,320,0.55,Far
+Six Flags,Magic Mountain,Tweety’s Escape,6,Kids,220,0.23,Closest
+Six Flags,Magic Mountain,Twisted Colossus,30,Thrill,410,0.84,Farthest
+Six Flags,Magic Mountain,Viper,9,Thrill,270,0.39,Close
+Six Flags,Magic Mountain,West Coast Racers,39,Thrill,320,0.55,Far
+Six Flags,Magic Mountain,Whistlestop Train,5,Kids,320,0.55,Far
+Six Flags,Magic Mountain,WONDER WOMAN Lasso of Truth,7,Thrill,450,0.97,Farthest
+Six Flags,Magic Mountain,X2,39,Thrill,240,0.29,Close
+Six Flags,Magic Mountain,Yosemite Sam’s Flight School,6,Kids,220,0.23,Closest
+Six Flags,Mexico,*The Joker,43,Thrill,300,0.37,Close
+Six Flags,Mexico,Triple Torre Kilahuea,41,Thrill,380,0.48,Close
+Six Flags,Mexico,The Joker y Harley Quinn,41,Family,300,0.37,Close
+Six Flags,Mexico,*Boomerang,32,Thrill,600,0.79,Farthest
+Six Flags,Mexico,*Batman The Ride,31,Thrill,550,0.72,Far
+Six Flags,Mexico,*Crazanity,29,Thrill,500,0.65,Far
+Six Flags,Mexico,Medusa Steel Coaster,27,Thrill,150,0.15,Closest
+Six Flags,Mexico,*Supergirl Sky Flight,27,Family,650,0.86,Farthest
+Six Flags,Mexico,*Superman El Último Escape,27,Thrill,110,0.1,Closest
+Six Flags,Mexico,JUSTICE LEAGUE: Battle for Metropolis,21,Family,450,0.58,Far
+Six Flags,Mexico,*Wonder Woman Coaster,19,Thrill,750,1,Farthest
+Six Flags,Mexico,*The Dark Knight Coaster,16,Thrill,340,0.42,Close
+Six Flags,Mexico,Río Salvaje,12,Family,100,0.08,Closest
+Six Flags,Mexico,*Aquaman Splashdown,12,Family,650,0.86,Farthest
+Six Flags,Mexico,Superman Krypton Coaster,10,Thrill,400,0.51,Far
+Six Flags,Mexico,Tsunami,9,Thrill,430,0.55,Far
+Six Flags,Mexico,Rock & Roll,8,Family,550,0.72,Far
+Six Flags,Mexico,Looney Tunes Circo Express,7,Kids,180,0.2,Closest
+Six Flags,Mexico,Los Globos de Elmer,7,Kids,260,0.31,Close
+Six Flags,Mexico,La Mini Torre de Sylvestre,7,Kids,300,0.37,Close
+Six Flags,Mexico,*Piñas Locas,7,Kids,300,0.37,Close
+Six Flags,Mexico,El Pingüino,7,Kids,250,0.3,Close
+Six Flags,Mexico,Batman Baticopteros,7,Kids,350,0.44,Close
+Six Flags,Mexico,DC Super Hero Girls,7,Kids,320,0.39,Close
+Six Flags,Mexico,El Campo de Aventuras de Looney Tunes,7,Kids,180,0.2,Closest
+Six Flags,Mexico,El Tornado de Taz,7,Kids,260,0.31,Close
+Six Flags,Mexico,La Escuela de Vuelo de Sam Bigotes,7,Kids,210,0.24,Closest
+Six Flags,Mexico,Marvin el Marciano: Aventura Espacial,7,Kids,200,0.23,Closest
+Six Flags,Mexico,Pato Lucas Blaster,7,Kids,300,0.37,Close
+Six Flags,Mexico,ACME Trucking Company,7,Kids,330,0.41,Close
+Six Flags,Mexico,Expresso Musical,6,Kids,330,0.41,Close
+Six Flags,Mexico,Go Karts Teen Titans,6,Kids,700,0.93,Farthest
+Six Flags,Mexico,La Fiesta de las Tazas,6,Family,40,0,Closest
+Six Flags,Mexico,Le Grand Carrousell,6,Family,200,0.23,Closest
+Six Flags,Mexico,Ruleta,6,Kids,190,0.21,Closest
+Six Flags,Mexico,Sling Shot,6,Thrill,500,0.65,Far
+Six Flags,Mexico,Los Super villanos de Gotham City,6,Family,450,0.58,Far
+Six Flags,Mexico,X-Flight,6,Thrill,550,0.72,Far
+Six Flags,New England,1909 Illions Grand Carousel,5,Family,50,0,Closest
+Six Flags,New England,Animation Department,5,Kids,300,0.74,Far
+Six Flags,New England,Balloon Race,7,Kids,250,0.59,Far
+Six Flags,New England,BATMAN THE DARK KNIGHT™,33,Thrill,350,0.88,Farthest
+Six Flags,New England,Blizzard River,34,Family,390,1,Farthest
+Six Flags,New England,CATWOMAN™ Whip,10,Family,300,0.74,Far
+Six Flags,New England,CYBORG™ Hyper Drive,19,Thrill,330,0.82,Farthest
+Six Flags,New England,Daffy Duck Hollywood Tours,5,Kids,310,0.76,Farthest
+Six Flags,New England,Flashback,13,Thrill,280,0.68,Far
+Six Flags,New England,GOTHAM CITY GAUNTLET ESCAPE FROM ARKHAM ASYLUM™,22,Thrill,,-0.15,Closest
+Six Flags,New England,GOTHAM CITY™ Crime Wave,6,Thrill,330,0.82,Farthest
+Six Flags,New England,HARLEY QUINN™ Spinsanity,56,Thrill,300,0.74,Far
+Six Flags,New England,Kontiki,5,Family,150,0.29,Close
+Six Flags,New England,Krazy Kars,5,Kids,250,0.59,Far
+Six Flags,New England,Krazy Kups,5,Kids,190,0.41,Close
+Six Flags,New England,Midnight Mansion,18,Seasonal,180,0.38,Close
+Six Flags,New England,Midnight Uprising,5,Seasonal,170,0.35,Close
+Six Flags,New England,New England SkyScreamer,29,Thrill,380,0.97,Farthest
+Six Flags,New England,Nightmares,19,Seasonal,160,0.32,Close
+Six Flags,New England,Pandemonium,45,Thrill,350,0.88,Farthest
+Six Flags,New England,Scrambler,9,Family,350,0.88,Farthest
+Six Flags,New England,Scream,21,Thrill,130,0.24,Closest
+Six Flags,New England,Ships Ahoy!,7,Kids,250,0.59,Far
+Six Flags,New England,Slasher Circus 3D,24,Seasonal,300,0.74,Far
+Six Flags,New England,Stampede Bumper Cars,14,Kids,200,0.44,Close
+Six Flags,New England,SUPERGIRL Sky Flyer,17,Thrill,300,0.74,Far
+Six Flags,New England,SUPERMAN™ The Ride,35,Thrill,350,0.88,Farthest
+Six Flags,New England,Taz Prop Delivery Company,5,Kids,330,0.82,Farthest
+Six Flags,New England,Tea Cups,12,Family,280,0.68,Far
+Six Flags,New England,TERROR TALES,30,Seasonal,270,0.65,Far
+Six Flags,New England,The Aftermath: Zombie’s Revenge,37,Seasonal,270,0.65,Far
+Six Flags,New England,The Great Chase,10,Kids,290,0.71,Far
+Six Flags,New England,THE JOKER™ 4D Free Fly Coaster,24,Thrill,300,0.74,Far
+Six Flags,New England,THE RIDDLER™ Revenge,39,Thrill,320,0.79,Farthest
+Six Flags,New England,Thunderbolt,22,Thrill,120,0.21,Closest
+Six Flags,New England,Tomahawk,9,Thrill,140,0.26,Close
+Six Flags,New England,Tweety’s Clubhouse,5,Kids,260,0.62,Far
+Six Flags,New England,Undead Alley,5,Seasonal,150,0.29,Close
+Six Flags,New England,Wacky Wagons,5,Kids,190,0.41,Close
+Six Flags,New England,Whirlybirdz,5,Kids,240,0.56,Far
+Six Flags,New England,Wicked Cyclone,25,Thrill,360,0.91,Farthest
+Six Flags,New England,Wild Wheelz,13,Family,280,0.68,Far
+Six Flags,New England,Zinger Swings,5,Family,250,0.59,Far
+Six Flags,New England,ZoomJets,5,Kids,200,0.44,Close
+Six Flags,Over Georgia,Acrophobia,17,Thrill,100,0,Closest
+Six Flags,Over Georgia,BATMAN: The Ride,51,Thrill,690,1,Farthest
+Six Flags,Over Georgia,Blue Hawk,38,Thrill,330,0.39,Close
+Six Flags,Over Georgia,CATWOMAN Whip,42,Family,640,0.92,Farthest
+Six Flags,Over Georgia,Dahlonega Mine Train,20,Kids,150,0.08,Closest
+Six Flags,Over Georgia,Dare Devil Dive,63,Thrill,350,0.42,Close
+Six Flags,Over Georgia,Georgia Scorcher,37,Thrill,110,0.02,Closest
+Six Flags,Over Georgia,Goliath,54,Thrill,200,0.17,Closest
+Six Flags,Over Georgia,Great American Scream Machine,26,Seasonal,300,0.34,Close
+Six Flags,Over Georgia,Hanson Cars,20,Kids,260,0.27,Close
+Six Flags,Over Georgia,Hurricane Harbor,13,Family,480,0.64,Far
+Six Flags,Over Georgia,JUSTICE LEAGUE: Battle for Metropolis,50,Family,230,0.22,Closest
+Six Flags,Over Georgia,Monster Mansion,28,Seasonal,300,0.34,Close
+Six Flags,Over Georgia,Pandemonium,40,Thrill,500,0.68,Far
+Six Flags,Over Georgia,SkyScreamer,23,Thrill,350,0.42,Close
+Six Flags,Over Georgia,SUPERMAN: Ultimate Flight,41,Thrill,300,0.34,Close
+Six Flags,Over Georgia,THE JOKER Funhouse Coaster,30,Thrill,450,0.59,Far
+Six Flags,Over Georgia,The RIDDLER Mindbender,47,Thrill,450,0.59,Far
+Six Flags,Over Georgia,Twisted Cyclone,39,Thrill,150,0.08,Closest
+Six Flags,Over Texas,BATMAN The Ride,76,Thrill,400,0.88,Farthest
+Six Flags,Over Texas,MR. FREEZE: Reverse Blast,65,Thrill,300,0.63,Far
+Six Flags,Over Texas,The RIDDLER Revenge,65,Thrill,380,0.83,Farthest
+Six Flags,Over Texas,La Vibora,58,Thrill,260,0.53,Far
+Six Flags,Over Texas,New Texas Giant,56,Thrill,280,0.58,Far
+Six Flags,Over Texas,Pandemonium,50,Thrill,240,0.48,Close
+Six Flags,Over Texas,SUPERMAN: Tower of Power,35,Thrill,200,0.38,Close
+Six Flags,Over Texas,Titan,35,Thrill,350,0.75,Far
+Six Flags,Over Texas,THE JOKER,33,Thrill,450,1,Farthest
+Six Flags,Over Texas,CATWOMAN Whip,28,Thrill,430,0.95,Farthest
+Six Flags,Over Texas,Runaway Mine Train,28,Kids,250,0.5,Close
+Six Flags,Over Texas,Runaway Mountain,28,Kids,150,0.25,Closest
+Six Flags,Over Texas,Texas SkyScreamer,26,Thrill,350,0.75,Far
+Six Flags,Over Texas,HARLEY QUINN Spinsanity,25,Thrill,420,0.93,Farthest
+Six Flags,Over Texas,JUSTICE LEAGUE: Battle for Metropolis,25,Family,160,0.28,Close
+Six Flags,Over Texas,Curse of Ra,25,Seasonal,400,0.88,Farthest
+Six Flags,Over Texas,Art of Torture,25,Seasonal,330,0.7,Far
+Six Flags,Over Texas,The Do Drop Inn: Dead and Breakfast,25,Seasonal,330,0.7,Far
+Six Flags,Over Texas,Killer Theater,25,Seasonal,320,0.68,Far
+Six Flags,Over Texas,Gunslinger,23,Family,280,0.58,Far
+Six Flags,Over Texas,Piggy’s Blood Shed,23,Seasonal,310,0.65,Far
+Six Flags,Over Texas,El Diablo,22,Thrill,380,0.83,Farthest
+Six Flags,Over Texas,LABSICS: CLASSIFIED,22,Seasonal,300,0.63,Far
+Six Flags,Over Texas,Conquistador,21,Family,200,0.38,Close
+Six Flags,Over Texas,El Aserradero,20,Family,230,0.45,Close
+Six Flags,Over Texas,Judge Roy Scream,20,Thrill,300,0.63,Far
+Six Flags,Over Texas,Shock Wave,20,Thrill,300,0.63,Far
+Six Flags,Over Texas,Sidewinder,20,Family,300,0.63,Far
+Six Flags,Over Texas,Mini Mine Train,17,Kids,270,0.55,Far
+Six Flags,Over Texas,Casa Magnetica,17,Seasonal,300,0.63,Far
+Six Flags,Over Texas,Boomtown Depot,15,Family,270,0.55,Far
+Six Flags,Over Texas,Chaparral Antique Cars,15,Family,250,0.5,Close
+Six Flags,Over Texas,Roaring Rapids,15,Family,150,0.25,Closest
+Six Flags,Over Texas,Silver Star Carousel,15,Family,60,0.03,Closest
+Six Flags,Over Texas,Texas Depot,15,Family,280,0.58,Far
+Six Flags,Over Texas,Six Flags Speedway Go Karts,12,Family,250,0.5,Close
+Six Flags,Over Texas,El Sombrero,11,Family,90,0.1,Closest
+Six Flags,Over Texas,BATWING,10,Family,330,0.7,Far
+Six Flags,Over Texas,La Fiesta de las Tazas,10,Family,140,0.23,Closest
+Six Flags,Over Texas,Rodeo,10,Family,160,0.28,Close
+Six Flags,Over Texas,Bugs Bunny Boomtown,5,Kids,60,0.03,Closest
+Six Flags,Over Texas,Bugs Bunny Cloud Bouncer,5,Kids,140,0.23,Closest
+Six Flags,Over Texas,Dive Bomber Alley,5,Thrill,200,0.38,Close
+Six Flags,Over Texas,Looney Tunes Adventure Camp,5,Kids,90,0.1,Closest
+Six Flags,Over Texas,Marvin the Martian Space Rockets,5,Kids,130,0.2,Closest
+Six Flags,Over Texas,Speedy Gonzales’ Truckin’ Across America,5,Kids,50,0,Closest
+Six Flags,Over Texas,Taz Tornado Swings,5,Kids,150,0.25,Closest
+Six Flags,Over Texas,Wile E. Coyote’s Grand Canyon Blaster,5,Kids,100,0.13,Closest
+Six Flags,Over Texas,Yosemite Sam’s Texas Tea Cups,5,Kids,70,0.05,Closest
+Six Flags,St Louis,American Thunder,19,Thrill,200,0.42,Close
+Six Flags,St Louis,BATMAN: The Ride,23,Thrill,150,0.21,Closest
+Six Flags,St Louis,Boomerang,24,Thrill,250,0.63,Far
+Six Flags,St Louis,Colossus,14,Family,150,0.21,Closest
+Six Flags,St Louis,Fireball,21,Thrill,260,0.67,Far
+Six Flags,St Louis,Justice League: Battle for Metropolis,48,Family,150,0.21,Closest
+Six Flags,St Louis,MR. FREEZE: Reverse Blast,33,Thrill,240,0.58,Far
+Six Flags,St Louis,Ninja,29,Thrill,200,0.42,Close
+Six Flags,St Louis,Pandemonium,41,Thrill,230,0.54,Far
+Six Flags,St Louis,River King Mine Train,24,Kids,180,0.33,Close
+Six Flags,St Louis,Shazam!,10,Family,200,0.42,Close
+Six Flags,St Louis,SkyScreamer,15,Thrill,250,0.63,Far
+Six Flags,St Louis,Spinsanity,21,Thrill,100,0,Closest
+Six Flags,St Louis,SUPERGIRL Sky Flyer,15,Thrill,300,0.83,Farthest
+Six Flags,St Louis,The Boss,19,Thrill,340,1,Farthest
+Six Flags,St Louis,Xcalibur,14,Thrill,200,0.42,Close
